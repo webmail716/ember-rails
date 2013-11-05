@@ -85,7 +85,7 @@
 
   <div>
     <label>Contact</label>
-    {{view Ember.Select contentBinding="contacts" optionValuePath="contact.id" optionLabelPath="contact.name" selection=selectedContact prompt="Choose a contact"}}
+    {{view Ember.Select contentBinding="contacts" optionValuePath="content.id" optionLabelPath="content.name" selectionBinding=selectedContact prompt="Choose a contact" value=selectedContact.id}}
   
     {{!-- {{render contactsSelect}} --}}
   </div>

@@ -19,7 +19,7 @@ App.Store = require('./store'); // delete if you don't want ember-data
 // });
 
 App.Contact = DS.Model.extend({
-	// units: DS.hasMany('App.Unit'),
+	units: DS.hasMany('App.Unit'),
 
 	name:     DS.attr('string'),
 	email:    DS.attr('string'),
@@ -34,6 +34,8 @@ App.UnitsNewController = Ember.ObjectController.extend({
 	// 	return this.get('controllers.contacts');
 	// }.property(),
 
+	selectedContact: "blah", 
+
 	contacts: function() {
 		return App.Contact.find();
 	},
@@ -42,6 +44,11 @@ App.UnitsNewController = Ember.ObjectController.extend({
 	  createUnit: function() {
 	  	var router = this.get('target');
 	  	var unit = this.get('model');
+	  	var sc = this.get('selectedContact');
+	  	if (sc != null) {
+	  		alert("selected contact = " + sc);
+	  		unit.contact = App.Contact.find(sc.id);
+	  	}
 
 	  	unit.save();
 	  	router.transitionTo("units.index");
@@ -165,8 +172,11 @@ App.Unit = DS.Model.extend({
 });
 
 App.UnitIndexController = Ember.ObjectController.extend({
-	contacts: null,
-	selectedContact: null,
+	selectedContact: "blah", 
+
+	contacts: function() {
+		return App.Contact.find();
+	},
 	
 	isEditing: false, 
 
@@ -179,8 +189,17 @@ App.UnitIndexController = Ember.ObjectController.extend({
 			this.set("isEditing", false);
 			var unit = this.get('model');
 			// var contact = this.controllerFor('contactsSelect').get('selectedContact');
-			var contact = this.controllers.contactsSelect.get('selectedContact');
-			alert("contact === " + contact);
+
+	  	var sc = this.get('selectedContact');
+	  	if (sc != null) {
+	  		alert("selected contact = " + sc);
+	  		var contact = App.Contact.find(sc.id);
+	  		
+	  		unit.set('contact', contact);
+
+	  		unit.contact = contact;
+	  	}
+
 			unit.save();
 		}		
 	}	
