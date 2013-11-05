@@ -1,0 +1,9 @@
+<h1>Units</h1>
+
+<ul>
+ {{#each model}}
+ <li>{{#linkTo 'unit' this}}{{this.id}}{{/linkTo}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}

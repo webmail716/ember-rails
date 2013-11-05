@@ -1,0 +1,13 @@
+<h1>ContactS index</h1>
+
+<ul>
+{{#each contact in model}}
+	{{partial "contacts/record"}}
+{{/each}}
+</ul>
+
+{{#linkTo 'contacts.new'}}New contact{{/linkTo}}
+
+<br/>
+
+{{outlet}}

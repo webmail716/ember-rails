@@ -1,0 +1,95 @@
+
+  <div {{bindAttr class=":controls errors.unit_number:error"}}>
+    <label>Unit number</label>
+    {{input type="text" value=unit_number placeholder="Unit number"}}
+    <small class="below">{{errors.unit_number}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.bedrooms:error"}}>
+    <label>Bedrooms</label>
+    {{input type="text" value=bedrooms placeholder="Bedrooms"}}
+    <small class="below">{{errors.bedrooms}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.bathrooms:error"}}>
+    <label>Bathrooms</label>
+    {{input type="text" value=bathrooms placeholder="Bathrooms"}}
+    <small class="below">{{errors.bathrooms}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.neighborhood:error"}}>
+    <label>Neighborhood</label>
+    {{input type="text" value=neighborhood placeholder="Neighborhood"}}
+    <small class="below">{{errors.neighborhood}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.price:error"}}>
+    <label>Price</label>
+    {{input type="text" value=price placeholder="Price"}}
+    <small class="below">{{errors.price}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.sqft:error"}}>
+    <label>Square feet</label>
+    {{input type="text" value=sqft placeholder="Square feet"}}
+    <small class="below">{{errors.sqft}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.unit_type:error"}}>
+    <label>Unit type</label>
+    {{input type="text" value=unit_type placeholder="Unit type"}}
+    <small class="below">{{errors.unit_type}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.lon:error"}}>
+    <label>Longitude</label>
+    {{input type="text" value=lon placeholder="Longitude"}}
+    <small class="below">{{errors.lon}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.lat:error"}}>
+    <label>Latitude</label>
+    {{input type="text" value=lat placeholder="Latitude"}}
+    <small class="below">{{errors.lat}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.for_sale:error"}}>
+    <label>For sale</label>
+    {{input type="checkbox" name=for_sale checked=for_sale}}
+    <small class="below">{{errors.for_sale}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.for_rent:error"}}>
+    <label>For rent</label>
+    {{input type="checkbox" name=for_rent checked=for_rent}}
+    <small class="below">{{errors.for_rent}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.searchable:error"}}>
+    <label>Searchable</label>
+    {{input type="checkbox" name=searchable checked=searchable}}
+    <small class="below">{{errors.searchable}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.description:error"}}>
+    <label>Description</label>
+    {{input type="text" value=description placeholder="Description"}}
+    <small class="below">{{errors.description}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.amenity_list:error"}}>
+    <label>Amenity list</label>
+    {{input type="text" value=amenity_list placeholder="Amenity list"}}
+    <small class="below">{{errors.amenity_list}}</small>
+  </div>
+
+  <div>
+    <label>Contact</label>
+    {{view Ember.Select contentBinding="contacts" optionValuePath="contact.id" optionLabelPath="contact.name" selection=selectedContact prompt="Choose a contact"}}
+  
+    {{!-- {{render contactsSelect}} --}}
+  </div>
+
+<div>
+{{view App.UploadFileView name="neighborhood" contentBinding="content"}}
+</div>

@@ -1,0 +1,18 @@
+<form {{action "search" on="submit"}}>
+<h1>Units Search Page</h1>
+<div>
+	Price: Min {{input type="text" value=min_price}} to Max {{input type="text" value=max_price}} <br/>
+	Bedrooms: Min {{input type="text" value=min_bedrooms}} to Max {{input type="text" value=max_bedrooms}} <br/>
+	Bathrooms: Min {{input type="text" value=min_bathrooms}} to Max {{input type="text" value=max_bathrooms}} <br/>
+	For sale: {{input type="checkbox" name=for_sale checked=for_sale}} <br/>
+	For rent: {{input type="checkbox" name=for_rent checked=for_rent}} <br/>
+	<button type="submit">Submit</button>
+</div>
+</form>
+<div>
+{{#each unit in results}}
+	{{render "unit/_record" unit}}
+{{else}}
+	No results
+{{/each}}
+</div>

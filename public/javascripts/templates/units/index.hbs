@@ -1,0 +1,17 @@
+Hello
+
+<ul>
+{{#each unit in model}}
+	{{render "unit/_record" unit}}
+	{{render "unit/_actions" unit}}
+{{/each}}
+</ul>
+
+{{#linkTo 'units.new'}}New unit{{/linkTo}}
+
+<br/>
+
+{{#linkTo 'units.search'}}Search units{{/linkTo}}
+
+{{outlet "subbody"}}
+

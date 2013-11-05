@@ -1,0 +1,8 @@
+Name: {{contact.name}}
+Email: {{contact.email}}
+Phone: {{contact.phone}}
+	
+{{#linkTo 'contact' contact }}Show{{/linkTo}}
+<button {{ action "destroy" contact}}>Destroy</button>
+<br/>
+	

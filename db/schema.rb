@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130912142613) do
+ActiveRecord::Schema.define(version: 20131031003002) do
 
   create_table "api_keys", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +23,37 @@ ActiveRecord::Schema.define(version: 20130912142613) do
 
   add_index "api_keys", ["access_token"], name: "index_api_keys_on_access_token", unique: true
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "units", force: true do |t|
+    t.integer  "property_id"
+    t.string   "unit_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "neighborhood"
+    t.decimal  "price"
+    t.string   "unit_type"
+    t.integer  "sqft"
+    t.string   "description"
+    t.float    "lon"
+    t.float    "lat"
+    t.boolean  "searchable"
+    t.boolean  "for_sale"
+    t.boolean  "for_rent"
+    t.string   "amenity_list"
+    t.integer  "bedrooms"
+    t.integer  "bathrooms"
+    t.integer  "contact_id"
+  end
+
+  add_index "units", ["property_id"], name: "index_units_on_property_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
