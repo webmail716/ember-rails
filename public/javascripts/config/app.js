@@ -47,10 +47,12 @@ App.UnitsNewController = Ember.ObjectController.extend({
 	  	var sc = this.get('selectedContact');
 	  	if (sc != null) {
 	  		alert("selected contact = " + sc);
-	  		unit.contact = App.Contact.find(sc.id);
+	  		// unit.contact = App.Contact.find(sc.id);
+	  		unit.set('contact', App.Contact.find(sc.id));
 	  	}
 
 	  	unit.save();
+	  	unit.get("store").commit();
 	  	router.transitionTo("units.index");
 		},
 
