@@ -4,5 +4,7 @@ SimpleAuth::Application.routes.draw do
   resources :addresses, except: [:new, :edit]
   resources :properties, except: [:new, :edit]
   resources :users, except: [:new, :edit, :destroy]
+  resources :images
+  
   post 'session' => 'session#create'
 end

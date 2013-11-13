@@ -16,6 +16,7 @@ App.Router.map(function() {
 		this.route("search");
 
 		this.resource("unit", { path: "" }, function() {
+		// this.resource("unit", { path: ":unit_id" }, function() {
 			this.route("index", { path: ":unit_id" });
 // 	// 		this.route("edit");	
 // 	// 		this.route("destroy");
@@ -31,6 +32,15 @@ App.Router.map(function() {
 		});
 	});
 	
+	this.resource("images", function() {
+		this.route("index");
+		this.route("new");
+
+		this.resource("image", { path: "" }, function() {
+			this.route("index", { path: ":image_id" });
+		});
+	});
+
 // 	// this.resource("unit.index", { path: "/units/:unit_id" });
 
 });

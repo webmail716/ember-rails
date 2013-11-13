@@ -23,4 +23,13 @@ class ActiveSupport::TestCase
 	register_spec_type self do |desc|
     desc < ActiveRecord::Base if desc.is_a? Class
   end  
+
+  def login
+    @api_key = FactoryGirl.create :api_key
+    @request.headers["HTTP_AUTHORIZATION"] = @api_key.access_token
+    @user = FactoryGirl.create :user
+    @api_key.user = @user
+    @api_key.save!
+  end
+  
 end
