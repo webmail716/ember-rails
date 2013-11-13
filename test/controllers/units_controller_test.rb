@@ -14,14 +14,6 @@ class UnitsControllerTest < ActionController::TestCase
 		assert_equal 6, results['units'].size
 	end
 
-	def login
-		@api_key = FactoryGirl.create :api_key
-		@request.headers["HTTP_AUTHORIZATION"] = @api_key.access_token
-		@user = FactoryGirl.create :user
-		@api_key.user = @user
-		@api_key.save!
-	end
-
 	test "show" do
 		unit = FactoryGirl.create :unit
 

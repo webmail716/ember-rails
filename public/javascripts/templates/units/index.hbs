@@ -1,10 +1,19 @@
-Hello
+<h1>Units index page</h1>
 
 <ul>
-{{#each unit in model}}
-	{{render "unit/_record" unit}}
-	{{render "unit/_actions" unit}}
-{{/each}}
+	{{#each unit in controller}}
+		{{!-- {{render "unit/_record"  contentBinding=unit controller='App.unitIndexController'}} --}}
+		{{!-- <li>Unit number: {{unit.unit_number}}</li> --}}
+
+		{{partial "unit/record" unitBinding=unit}}
+		
+		{{#linkTo 'unit' unit}}Show{{/linkTo}}
+
+		{{!-- {{render "unit/_record" unit controller='App.unitIndexController'}} --}}
+		{{!-- {{render "unit/_actions" unit}} --}}
+		{{!-- {{view App.UnitIndexView templateName="unit/_record" controller=App.UnitIndexController}} --}}
+	{{!-- {{view App.UnitDetailsView unitBinding=unit}} --}}
+	{{/each}}
 </ul>
 
 {{#linkTo 'units.new'}}New unit{{/linkTo}}
