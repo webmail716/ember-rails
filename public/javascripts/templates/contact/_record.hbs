@@ -1,9 +1,13 @@
 Name: {{name}}
 Email: {{email}}
 Phone: {{phone}}
-Units: {{units.size}}	
+Units: {{units.length}}	
 
-{{#linkTo 'contact' model }}Show{{/linkTo}}
-<button {{ action "destroy" contact}}>Destroy</button>
-<br/>
+{{#each unit in units}}
+	{{render "unit/_record" unit}}
+{{/each}}
+
+{{!-- {{#linkTo 'contact' model }}Show{{/linkTo}} --}}
+<button {{ action "destroy" model}}>Destroy</button>
+<br/><br/>
 	

@@ -1,8 +1,17 @@
 <h1>ContactS index</h1>
 
 <ul>
-{{#each contact in model}}
-	{{render "contact/_record" contact}}
+{{#each model}}
+Name: {{name}}
+<br/>
+Email: {{email}}
+<br/>
+Phone: {{phone}}
+<br/>
+Units: {{units.length}}	
+<br/>
+{{#linkTo 'contact.index' this}}Show{{/linkTo}}
+<br/>
 {{/each}}
 </ul>
 
