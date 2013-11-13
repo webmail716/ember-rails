@@ -5,14 +5,20 @@
       <ul class="nav">
         <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
         <li>{{#linkTo 'top_secret'}}Top Secret{{/linkTo}}</li>
+
         {{#if isAuthenticated}}
+
           <li><a href="#">{{currentUser.email}}</a></li>
           <li><a href="#" {{action 'logout'}}>Logout</a></li>
-	  <li>{{#linkTo "units"}}Units{{/linkTo}}</li>
+          
+          <li>{{#linkTo "units"}}Units{{/linkTo}}</li>
           <li>{{#linkTo "contacts"}}Contacts{{/linkTo}}</li>
+          <li>{{#linkTo "images"}}Images{{/linkTo}}</li>
         {{else}}
+
           <li>{{#linkTo 'users.new'}}Register{{/linkTo}}</li>
           <li>{{#linkTo 'sessions.new'}}Login{{/linkTo}}</li>
+
         {{/if}}
       </ul>
     </div>
