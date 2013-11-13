@@ -10,6 +10,7 @@ require('../vendor/ember-data');
 var App = window.App = Ember.Application.create({
 	LOG_TRANSITIONS: true
 });
+
 App.Store = require('./store'); // delete if you don't want ember-data
 
 // var UnitRoute = Ember.Route.extend({
@@ -18,89 +19,29 @@ App.Store = require('./store'); // delete if you don't want ember-data
 // 	}
 // });
 
-App.Contact = DS.Model.extend({
-	units: DS.hasMany('App.Unit'),
+// App.ContactsController = Ember.ArrayController.extend({
+// 	selectedContact: null
+// 	// itemController: 'contact'
+// });
 
-	name:     DS.attr('string'),
-	email:    DS.attr('string'),
-	phone:    DS.attr('string')
+// App.ContactsRoute = Ember.Route.extend({
+// 	setupController: function(controller, model) {
+// 		controller.set('model', App.Contact.find());
+// 		controller.set('content', App.Contact.find());
+// 	}
+// });
 
-});
+// App.ContactsSelectController = Ember.ArrayController.extend({
+// 	selectedContact: null
+// 	// itemController: 'contact'
+// });
 
-
-App.UnitsNewController = Ember.ObjectController.extend({
-	// needs: ['contacts'],
-	// possibleContacts: function() {
-	// 	return this.get('controllers.contacts');
-	// }.property(),
-
-	selectedContact: "blah", 
-
-	contacts: function() {
-		return App.Contact.find();
-	},
-
-	actions: {
-	  createUnit: function() {
-	  	var router = this.get('target');
-	  	var unit = this.get('model');
-	  	var sc = this.get('selectedContact');
-	  	if (sc != null) {
-	  		alert("selected contact = " + sc);
-	  		// unit.contact = App.Contact.find(sc.id);
-	  		unit.set('contact', App.Contact.find(sc.id));
-	  	}
-
-	  	unit.save();
-	  	unit.get("store").commit();
-	  	router.transitionTo("units.index");
-		},
-
-		createUnitAjax: function() {
-			var unit = this.get('model');
-
-			var data = new FormData();	
-      data.append('bedrooms', unit.get('bedrooms'));
-      data.append('bathrooms', unit.get('bathrooms'));
-      data.append('price', unit.get('price'));			
-      data.append('neighborhood', '');
-
-	  	$.post('/units', data, function(results) {
-	  		router.transitionTo('units.index');
-	  	}).fail(function(jqxhr, textStatus, error) {
-	      if (jqxhr.status === 422) {
-	        errs = JSON.parse(jqxhr.responseText)
-	        unit.set('errors', errs.errors);
-	      }
-	  	});
-
-		}
-	}
-});
-
-App.ContactsController = Ember.ArrayController.extend({
-	selectedContact: null
-	// itemController: 'contact'
-});
-
-App.ContactsRoute = Ember.Route.extend({
-	setupController: function(controller, model) {
-		controller.set('model', App.Contact.find());
-		controller.set('content', App.Contact.find());
-	}
-});
-
-App.ContactsSelectController = Ember.ArrayController.extend({
-	selectedContact: null
-	// itemController: 'contact'
-});
-
-App.ContactsSelectRoute = Ember.Route.extend({
-	setupController: function(controller, model) {
-		controller.set('model', App.Contact.find());
-		controller.set('content', App.Contact.find());
-	}
-});
+// App.ContactsSelectRoute = Ember.Route.extend({
+// 	setupController: function(controller, model) {
+// 		controller.set('model', App.Contact.find());
+// 		controller.set('content', App.Contact.find());
+// 	}
+// });
 
 // contacts: Ember.Object.create({
 // 	selected: null,
@@ -118,230 +59,66 @@ App.ContactsSelectRoute = Ember.Route.extend({
 // 	optionValuePath: 'content.id'
 // });
 
-App.ContactsNewController = Ember.ObjectController.extend({
-	actions: {
-	  createContact: function() {
-	  	var router = this.get('target');
-	  	var contact = this.get('model');
+// App.Unit = DS.Model.extend({
+// 	contact:     DS.belongsTo('App.Contact'),
 
-	  	contact.save();
-	  	router.transitionTo("contacts.index");
-		}
-	}
-});
+//     unit_number: DS.attr('string'),
 
-App.Unit = DS.Model.extend({
-		contact:     DS.belongsTo('App.Contact'),
+//     bedrooms: 			DS.attr('number'),
 
-    unit_number: DS.attr('string'),
+//     bathrooms: 			DS.attr('number'),
 
-    bedrooms: 			DS.attr('number'),
+//     neighborhood: 	DS.attr('string'),
 
-    bathrooms: 			DS.attr('number'),
+//     price: 					DS.attr('number'),
 
-    neighborhood: 	DS.attr('string'),
+//     for_rent: 			DS.attr('boolean'),
 
-    price: 					DS.attr('number'),
+//     for_sale: 			DS.attr('boolean'),
 
-    for_rent: 			DS.attr('boolean'),
+//     // biography: 			DS.attr('string'),
 
-    for_sale: 			DS.attr('boolean'),
+//     lat: 						DS.attr('number'),
 
-    // biography: 			DS.attr('string'),
+//     lon: 						DS.attr('number'),
 
-    lat: 						DS.attr('number'),
+//     sqft:            DS.attr('number'),
 
-    lon: 						DS.attr('number'),
+//     unit_type:       DS.attr('string'), //commercial or residential
 
-    sqft:            DS.attr('number'),
+//     description:     DS.attr('string'),
 
-    unit_type:       DS.attr('string'), //commercial or residential
+//     searchable:      DS.attr('boolean'),
 
-    description:     DS.attr('string'),
+//     amenity_list:    DS.attr('string'),
 
-    searchable:      DS.attr('boolean'),
+//     google_map_url:  function() {
+//     	var map_url = "http://maps.googleapis.com/maps/api/staticmap?";
+//     	return map_url + "center=" + this.get('lat') + "," + this.get('lon');
+//     }.property('lat', 'lon'),
 
-    amenity_list:    DS.attr('string'),
-
-    google_map_url:  function() {
-    	var map_url = "http://maps.googleapis.com/maps/api/staticmap?";
-    	return map_url + "center=" + this.get('lat') + "," + this.get('lon');
-    }.property('lat', 'lon'),
-
-    google_map_link: function() {
-    	return "<a href='" + google_map_url + "'>Click here</a>";
-    }.property('google_map_url')
-});
-
-App.UnitIndexController = Ember.ObjectController.extend({
-	selectedContact: "blah", 
-
-	contacts: function() {
-		return App.Contact.find();
-	},
-	
-	isEditing: false, 
-
-	actions: {
-		edit: function() {
-			this.set("isEditing", true);
-		},
-
-		done: function() {
-			this.set("isEditing", false);
-			var unit = this.get('model');
-			// var contact = this.controllerFor('contactsSelect').get('selectedContact');
-
-	  	var sc = this.get('selectedContact');
-	  	if (sc != null) {
-	  		alert("selected contact = " + sc);
-	  		var contact = App.Contact.find(sc.id);
-	  		
-	  		unit.set('contact', contact);
-
-	  		unit.contact = contact;
-	  	}
-
-			unit.save();
-		}		
-	}	
-});
-
-App.UnitsIndexController = Ember.ObjectController.extend({
-	actions: {
-	  destroy: function(unit) {
-	  	var router = this.get('target');
-	  	
-	  	var data = { id: unit.id, type: 'DELETE' };
-	  	var store = this.get('store');
-
-			store.find('unit', unit.id).then(function(rec) {
-				rec.deleteRecord();
-				rec.save();
-			});
-		}
-	}
-});
-
-App.SearchParams = Ember.Object.extend({
-	min_bedrooms:   0,
-	max_bedrooms:   0,
-	min_bathrooms:  0,
-	max_bathrooms:  0,
-	min_price:      0,
-	max_price:      0,
-	for_sale:       'f'
-});
-
-// App.SearchParams = DS.Model.extend({
-// 	min_bedrooms: DS.attr('number'),
-
-// 	max_bedrooms: DS.attr('number'),
-
-// 	min_bathrooms: DS.attr('number'),
-
-// 	max_bathrooms: DS.attr('number'),
-
-// 	min_price: DS.attr('number'),
-
-// 	max_price: DS.attr('number')
-
+//     google_map_link: function() {
+//     	return "<a href='" + google_map_url + "'>Click here</a>";
+//     }.property('google_map_url')
 // });
 
-App.UnitsSearchController = Ember.ObjectController.extend({
-	actions: {
-		search: function() {
-			// alert("model = " + this.get("model"));
-			var model = this.get('model');
-			var units = this.get('store').find('unit', 
-				{ min_bedrooms: model.min_bedrooms, 	max_bedrooms: model.max_bedrooms,
-					min_bathrooms: model.min_bathrooms,	max_bathrooms: model.max_bathrooms,
-					min_price: model.min_price,					max_price: model.max_price,
-					for_sale: model.for_sale,  					for_rent: model.for_rent });
 
-	  	var router = this.get('target');
-	  	model.set('results', units);
-	 //  	$.post('/units/search', data, function(results) {
-	 //  		router.transitionTo('units');
-	 //  	}).fail(function(jqxhr, textStatus, error) {
-	 //      if (jqxhr.status === 422) {
-	 //        errs = JSON.parse(jqxhr.responseText)
-	 //        unit.set('errors', errs.errors);
-	 //      }
-	 //  	});
-		// }
+// App.SearchParams = Ember.Object.extend({
+// 	min_bedrooms:   0,
+// 	max_bedrooms:   0,
+// 	min_bathrooms:  0,
+// 	max_bathrooms:  0,
+// 	min_price:      0,
+// 	max_price:      0,
+// 	for_sale:       'f'
+// });
 
-		}
-	}
-});
+// App.UnitsRoute = Ember.Route.extend({});
 
-App.UnitsRoute = Ember.Route.extend({});
-
-App.UnitsSearchRoute = Ember.Route.extend({
-	model: function() {
-		// return App.SearchParams.createRecord();
-		return App.SearchParams.create();
-	},
-
-	setupController: function(controller, model){
-	  controller.set('model', model);
-  }
-
-	// renderTemplate: function() {
-	// 	this.render({ outlet: 'subbody' });
- //  } 
-});
-
-App.UnitIndexRoute = Ember.Route.extend({
-  setupController: function(controller, model) {
-    this.controller.set('model', model);
-    this.controller.set('contacts', App.Contact.find());
-    // this.controllerFor('ContactsSelect').set('model', App.Contact.find());    
-  },
-
-  model: function(params) {
-    return App.Unit.find(params.unit_id);
-  }
-});
-
-App.UnitsIndexRoute = Ember.Route.extend({
-  setupController: function(controller, model) {
-    this.controller.set('model', App.Unit.find());
-  }
-});
-
-App.UnitsNewRoute = Ember.Route.extend({
-  setupController: function(controller, model) {
-    this.controller.set('model', App.Unit.createRecord());
-    this.controller.set('contacts', App.Contact.find());
-  }
-
-	// renderTemplate: function() {
-	// 	this.render({ outlet: 'subbody' });
- //  } 
-});
-
-App.ContactIndexRoute = Ember.Route.extend({
-	setupController: function(controller, model) {
-		this.controller.set('model', model);
-	},
-
-	model: function(params) {
-		return App.Contact.find(params.contact_id);
-	}
-});
-
-App.ContactsIndexRoute = Ember.Route.extend({
-	setupController: function(controller, model) {
-		this.controller.set('model', App.Contact.find());
-	}
-});
-
-App.ContactsNewRoute = Ember.Route.extend({
-	setupController: function(controller, model) {
-		this.controller.set('model', App.Contact.createRecord());
-	}
-});
+// App.UnitDetailsView = Ember.View.extend({
+// 	templateName: "unit/_details",
+// 	controller: App.UnitIndexController
+// })
 
 // borrowed from http://stackoverflow.com/questions/9200000/file-upload-with-ember-data
 App.UploadFileView = Ember.TextField.extend({
@@ -352,16 +129,127 @@ App.UploadFileView = Ember.TextField.extend({
       var input = evt.target;
       if (input.files && input.files[0]) {
         var reader = new FileReader();
-        var that = this;
+        // var that = this;
         reader.onload = function(e) {
           var fileToUpload = e.srcElement.result;
           var unit = App.Unit.createRecord({ neighborhood: fileToUpload });
-          self.get('controller.target').get('store').commit();
+
+          var store = unit.get('store');
+          store.commit();
         }
         reader.readAsDataURL(input.files[0]);
       }
     }
 });
+
+App.UploadFileView_Image = Ember.TextField.extend({
+		controller: App.ImagesNewController,
+    type: 'file',
+    attributeBindings: ['name'],
+    file: null,
+    change: function(evt) {
+      
+      var input = evt.target;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        var that = this;
+
+        reader.onload = function(e) {
+          var fileToUpload = e.srcElement.result;
+          // var image = this.get('model');
+
+          // var image = App.Image.createRecord({ image: fileToUpload });
+
+          // var store = image.get('store');
+          // store.commit();
+
+          // JG - 2013-11-12 - stolen from http://stackoverflow.com/questions/16917123/how-to-get-uploaded-image-in-serverside-using-ember-js
+          that.$().parent(':eq(0)').children('img:eq(0)').attr('src', e.target.result);
+
+          Ember.run(function() {
+          	that.set('file', fileToUpload);
+          });
+
+          // App.imagesNewController.get('model').set('image', e.target.result);
+          
+
+          // var image = App.imagesNewController
+          // image.image = fileToUpload;
+          // var image = App.Image.createRecord({ image: fileToUpload }); //name: name, description: description, 
+
+          // var store = image.get('store');
+          // store.commit();
+        }
+
+        return reader.readAsDataURL(input.files[0]);
+      }
+    }
+});
+
+// JG - borrowed from http://stackoverflow.com/questions/19620122/ember-with-jquery-file-upload
+// App.UploadButton = Ember.View.extend({
+//     tagName: 'input',
+//     attributeBindings: ['type'],
+//     type: 'file',
+//     originalText: 'Upload Finished Product',
+//     uploadingText: 'Busy Uploading...',
+
+//     newItemHandler: function (data) {
+//         var store = this.get('controller.store');
+
+//         store.push('item', data);
+//     },
+
+//     // preUpload: function () {
+//     //     var me = this.$(),
+//     //         parent = me.closest('.fileupload-addbutton'),
+//     //         upload = this.get('uploadingText');
+
+//     //     parent.addClass('disabled');
+//     //     me.css('cursor', 'default');
+//     //     me.attr('disabled', 'disabled');
+//     // },
+
+//     // postUpload: function () {
+//     //     var me = this.$(),
+//     //         parent = me.closest('.fileupload-addbutton'),
+//     //         form = parent.closest('#fake_form_for_reset')[0],
+//     //         orig = this.get('originalText');
+
+//     //     parent.removeClass('disabled');
+//     //     me.css('cursor', 'pointer');
+//     //     me.removeAttr('disabled');
+//     //     form.reset();
+//     // },
+
+//     change: function (e) {
+//         var self = this;
+//         var formData = new FormData();
+//         // This is just CSS
+//         // this.preUpload();
+//         // formData.append('group_id', this.get('group.id'));
+//         formData.append('file', this.$().get(0).files[0]);
+//         $.ajax({
+//             url: '/file_upload_handler/',
+//             type: 'POST',
+//             //Ajax events
+//             success: function (data) { 
+//             	// self.postUpload(); 
+//             	self.newItemHandler(data); },
+//             error: function () { 
+//             	// self.postUpload(); 
+//             	alert('Failure'); },
+//             // Form data
+//             data: formData,
+//             //Options to tell jQuery not to process data or worry about content-type.
+//             cache: false,
+//             contentType: false,
+//             processData: false
+//         });
+//     }
+// });
+
+
 
 module.exports = App;
 
