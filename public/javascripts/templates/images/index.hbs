@@ -1,0 +1,22 @@
+{{!-- <script type="text/x-handlebars" data-template-name="images/index"> --}}
+<h1>images index</h1>
+<ul>
+{{#each image in controller}}
+		<li>Image name: {{image.name}}</li>
+		<li>Image description: {{image.description}}</li>
+		<img {{bind-attr src=image.image}} width=100 height=100/>
+
+		{{#linkTo 'image' image}}Show{{/linkTo}}
+
+ {{/each}}
+</ul>
+
+{{#linkTo 'images.new'}}New Image{{/linkTo}}
+
+<br/>
+
+{{outlet}}
+
+{{!-- {{outlet "subimages"}} --}}
+{{!-- </script> --}}
+

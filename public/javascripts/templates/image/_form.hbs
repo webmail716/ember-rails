@@ -1,0 +1,31 @@
+
+  <div {{bindAttr class=":controls errors.name:error"}}>
+    <label>Name</label>
+    {{input type="text" value=name placeholder="Name"}}
+    <small class="below">{{errors.name}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.description:error"}}>
+    <label>Description</label>
+    {{input type="text" value=description placeholder="Description"}}
+    <small class="below">{{errors.description}}</small>
+  </div>
+
+  <div>
+    <label>Unit</label>
+    {{view Ember.Select contentBinding="units" optionValuePath="content.id" optionLabelPath="content.unit_number" selectionBinding=selectedUnit prompt="Choose a unit" value=selectedUnit.id}}
+  
+    {{!-- {{render contactsSelect}} --}}
+  </div>
+
+     {{!-- {{input type="hidden" id="image" name="image" valueBinding=image }} --}}
+    {{!-- <input type="text" id="image" {{bind-attr value="image"}} /> --}}
+
+  {{!-- <img {{bind-attr src="image"}} /> --}}
+  <img src="#"/>
+
+  <br/>
+
+{{!-- {{view App.UploadFileView_Image}} --}}
+{{!-- {{view App.UploadFileView_Image name="image" contentBinding="image"}} --}}
+{{view App.UploadFileView_Image name="image" fileBinding=image}}
