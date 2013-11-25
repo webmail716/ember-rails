@@ -6,6 +6,8 @@ require('../vendor/jquery.cookie');
 require('../vendor/handlebars');
 require('../vendor/ember');
 require('../vendor/ember-data');
+require('../models/unit');
+
 
 var App = window.App = Ember.Application.create({
 	LOG_TRANSITIONS: true

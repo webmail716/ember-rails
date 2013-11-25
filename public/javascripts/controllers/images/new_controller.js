@@ -1,13 +1,17 @@
-require('../../models/unit');
+// var Unit = require('../../models/unit');
 
 var ImagesNewController = Ember.ObjectController.extend({
 		file: null,
 
     selectedUnit: "blah", 
 
-    units: function() {
-      return App.Unit.find();
-    },
+    // units: App.Unit.find(),
+
+    // units: function() {
+    //   return App.Unit.find();
+    //   // return ["jay1", "unitjay2"];
+    //   // return null;
+    // },
   
     actions: {
       createImage: function() {

@@ -2,7 +2,7 @@ var ImageIndexController = Ember.ObjectController.extend({
 	actions: {
     selectedUnit: "blah", 
 
-    units: function() {
+    myunits: function() {
       return App.Unit.find();
     },
   

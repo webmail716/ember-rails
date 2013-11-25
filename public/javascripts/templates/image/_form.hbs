@@ -13,16 +13,8 @@
 
   <div>
     <label>Unit</label>
-    {{view Ember.Select contentBinding="units" optionValuePath="content.id" optionLabelPath="content.unit_number" selectionBinding=selectedUnit prompt="Choose a unit" value=selectedUnit.id}}
-  
-    {{!-- {{render contactsSelect}} --}}
+    {{view Ember.Select contentBinding=units optionValuePath="content.id" optionLabelPath="content.unit_number" selectionBinding=selectedUnit prompt="Choose a unit" value=selectedUnit.id}}  
   </div>
-
-     {{!-- {{input type="hidden" id="image" name="image" valueBinding=image }} --}}
-    {{!-- <input type="text" id="image" {{bind-attr value="image"}} /> --}}
-
-  {{!-- <img {{bind-attr src="image"}} /> --}}
-  <img src="#"/>
 
   <br/>
 
