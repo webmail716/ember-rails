@@ -1,0 +1,12 @@
+
+<li>Name: {{property.name}}</li>
+<li>Street: {{property.street}}</li>
+<li>City: {{property.city}}</li>
+<li>State: {{property.state}}</li>
+<li>Zip: {{property.zip}}</li>
+<li>Neighborhood: {{property.neighborhood}}</li>
+<ul>
+	{{#each unit in units}}
+	<li>Unit {{unit.unit_number}}</li>
+	{{/each}}
+</ul>

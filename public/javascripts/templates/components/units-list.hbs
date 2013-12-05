@@ -1,0 +1,8 @@
+{{#each unit in units}}
+	{{unit-details-formatted unit=unit}}
+
+	{{#if isAuthenticated}}
+		{{!-- Show an edit button or link --}}
+		{{#linkTo 'unit.edit' unit}}Edit{{/linkTo}}
+	{{/if}}
+{{/each}}

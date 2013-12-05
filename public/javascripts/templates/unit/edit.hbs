@@ -1,0 +1,12 @@
+<h1>unit edit page</h1>
+	{{#if isEditing}}
+		{{partial "unit/form"}}
+		<button {{action 'done'}}>Done</button>
+	{{else}}
+		<button {{action 'edit'}}>Edit</button>
+	{{/if}}
+
+{{unit-details unit=this}}	
+{{partial "unit/actions" }}
+
+{{!-- {{view App.UnitView unitBinding=unit}} --}}

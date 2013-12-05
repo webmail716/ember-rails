@@ -1,0 +1,19 @@
+<h1>Pages index page</h1>
+
+<ul>
+	{{#each page in controller}}
+
+		{{page-details page=page}}
+		
+		{{#linkTo 'page.index' page}}Show{{/linkTo}}
+
+	{{/each}}
+	<li><br/></li>
+</ul>
+
+{{#linkTo 'pages.new'}}New page{{/linkTo}}
+
+<br/>
+
+{{outlet}}
+

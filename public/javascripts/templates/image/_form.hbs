@@ -13,7 +13,7 @@
 
   <div>
     <label>Unit</label>
-    {{view Ember.Select contentBinding=units optionValuePath="content.id" optionLabelPath="content.unit_number" selectionBinding=selectedUnit prompt="Choose a unit" value=selectedUnit.id}}  
+    {{view Ember.Select contentBinding="units" optionValuePath="content.id" optionLabelPath="content.unit_number" selectionBinding="selectedUnit" prompt="Choose a unit" value=selectedUnit.id}}  
   </div>
 
   <br/>

@@ -1,4 +1,4 @@
-var AuthManager = require('../config/auth_manager');
+var AuthManager = require('../models/auth_manager');
 
 var ApplicationRoute = Ember.Route.extend({
   init: function() {

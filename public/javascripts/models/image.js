@@ -3,6 +3,8 @@ var Image = DS.Model.extend({
   description:    DS.attr('string'),
   image: 					DS.attr('string'),
 
+  unit: 					DS.belongsTo('App.Unit'),
+
   errors: {}
 });
 

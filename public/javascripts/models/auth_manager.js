@@ -1,4 +1,5 @@
-var User = require('../models/user');
+var User = require('./user');
+var App = require('../config/app');
 
 var AuthManager = Ember.Object.extend({
 
@@ -23,7 +24,7 @@ var AuthManager = Ember.Object.extend({
     $.ajaxSetup({
       headers: { 'Authorization': 'Bearer ' + accessToken }
     });
-    var user = User.find(userId);
+    var user = App.User.find(userId);
     this.set('apiKey', App.ApiKey.create({
       accessToken: accessToken,
       user: user

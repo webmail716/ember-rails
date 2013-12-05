@@ -11,7 +11,7 @@
 </form>
 <div>
 {{#each unit in results}}
-	{{render "unit/_record" unit}}
+	{{unit-details-formatted unit=unit}}
 {{else}}
 	No results
 {{/each}}

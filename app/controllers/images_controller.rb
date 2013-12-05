@@ -32,7 +32,11 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
 
-    if @image.update(image_params)
+    #we can allow updating an image name and description and unit, but not the image data. for that we need to create a new image
+    update_params = image_params
+    update_params.delete("image")
+
+    if @image.update(update_params)
       head :no_content
     else
       render json: @image.errors, status: :unprocessable_entity

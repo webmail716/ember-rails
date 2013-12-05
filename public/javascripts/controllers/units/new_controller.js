@@ -4,12 +4,12 @@ var UnitsNewController = Ember.ObjectController.extend({
     //  return this.get('controllers.contacts');
     // }.property(),
 
-    selectedContact: "blah", 
+    //contacts: setup by route
+    //properties: setup by route
+    
+    selectedContact: null, 
+    selectedProperty: null,
 
-    contacts: function() {
-        return App.Contact.find();
-    },
-  
     actions: {
       createUnit: function() {
         var router = this.get('target');
@@ -19,6 +19,11 @@ var UnitsNewController = Ember.ObjectController.extend({
             alert("selected contact = " + sc);
             // unit.contact = App.Contact.find(sc.id);
             unit.set('contact', App.Contact.find(sc.id));
+        }
+
+        var prop = this.get('selectedProperty');
+        if (prop != null) {
+          unit.set('property', App.Property.find(prop.id));
         }
 
         unit.save();

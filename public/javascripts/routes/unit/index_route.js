@@ -2,7 +2,7 @@ var UnitIndexRoute = Ember.Route.extend({
   setupController: function(controller, model) {
     this.controller.set('model', model);
     this.controller.set('contacts', App.Contact.find());
-    // this.controllerFor('ContactsSelect').set('model', App.Contact.find());    
+    this.controller.set('properties', App.Property.find());
   },
 
   model: function(params) {

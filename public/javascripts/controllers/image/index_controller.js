@@ -1,6 +1,6 @@
 var ImageIndexController = Ember.ObjectController.extend({
 	actions: {
-    selectedUnit: "blah", 
+    selectedUnit: null, 
 
     myunits: function() {
       return App.Unit.find();
@@ -17,11 +17,11 @@ var ImageIndexController = Ember.ObjectController.extend({
 
 	  	var selected = this.get('selectedUnit');
 	  	if (selected != null) {
-	  		alert("selected unit = " + selected);
 	  		var unit = App.Unit.find(selected.id);
-	  		
-	  		image.set('unit', unit);
+	  		alert("selected unit = " + selected);
 
+	  		image.set('unit', unit);
+	  		image.unit = unit;
 	  		// unit.images.add(image);
 	  	}
 

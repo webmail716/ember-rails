@@ -3,7 +3,7 @@
 var ImagesNewController = Ember.ObjectController.extend({
 		file: null,
 
-    selectedUnit: "blah", 
+    selectedUnit: null, 
 
     // units: App.Unit.find(),
 
@@ -24,7 +24,6 @@ var ImagesNewController = Ember.ObjectController.extend({
         
 		  	var selected = this.get('selectedUnit');
 		  	if (selected != null) {
-		  		alert("selected unit = " + selected);
 		  		var unit = App.Unit.find(selected.id);
 		  		
 		  		image.set('unit', unit);

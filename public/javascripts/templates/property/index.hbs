@@ -1,0 +1,26 @@
+<h1>property index page</h1>
+	{{#if isEditing}}
+		{{partial "property/form"}}
+		<button {{action 'done'}}>Done</button>
+	{{else}}
+		<button {{action 'edit'}}>Edit</button>
+	{{/if}}
+
+
+{{partial "property/record"}}
+{{partial "property/actions" }}
+
+<h2>Units for this property</h2>
+
+{{!-- {{#each unit in units}}
+ unit {{unit.unit_number}}
+{{/each}}
+
+{{#each unit in controller.munits}}
+ unit {{unit.unit_number}}
+{{/each}}
+ --}}
+ units size === {{units}}
+{{units-list units=units}}
+
+{{!-- {{view App.UnitView unitBinding=unit}} --}}

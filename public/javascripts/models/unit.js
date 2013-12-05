@@ -1,15 +1,19 @@
 var Unit = DS.Model.extend({
-	contact:     DS.belongsTo('App.Contact'),
+	contact:            DS.belongsTo('App.Contact'),
 
-    unit_number: DS.attr('string'),
+    property:           DS.belongsTo('App.Property'),
+    
+    images:             DS.hasMany('App.Image'),
+    
+    unit_number:        DS.attr('string'),
 
     bedrooms: 			DS.attr('number'),
 
     bathrooms: 			DS.attr('number'),
 
-    neighborhood: 	DS.attr('string'),
+    neighborhood: 	    DS.attr('string'),
 
-    price: 					DS.attr('number'),
+    price: 				DS.attr('number'),
 
     for_rent: 			DS.attr('boolean'),
 
@@ -17,19 +21,19 @@ var Unit = DS.Model.extend({
 
     // biography: 			DS.attr('string'),
 
-    lat: 						DS.attr('number'),
+    lat: 				DS.attr('number'),
 
-    lon: 						DS.attr('number'),
+    lon: 				DS.attr('number'),
 
-    sqft:            DS.attr('number'),
+    sqft:               DS.attr('number'),
 
-    unit_type:       DS.attr('string'), //commercial or residential
+    unit_type:          DS.attr('string'), //commercial or residential
 
-    description:     DS.attr('string'),
+    description:        DS.attr('string'),
 
-    searchable:      DS.attr('boolean'),
+    searchable:         DS.attr('boolean'),
 
-    amenity_list:    DS.attr('string'),
+    amenity_list:       DS.attr('string'),
 
     google_map_url:  function() {
     	var map_url = "http://maps.googleapis.com/maps/api/staticmap?";
@@ -38,7 +42,16 @@ var Unit = DS.Model.extend({
 
     google_map_link: function() {
     	return "<a href='" + google_map_url + "'>Click here</a>";
-    }.property('google_map_url')
+    }.property('google_map_url'),
+
+    featured_image: function() {
+        var images = this.get('images');
+        if (images != null && images.size > 0) {
+            return images[0];
+        } else {
+            return null;
+        }
+    }.property('images.@each')
 });
 
 module.exports = Unit;

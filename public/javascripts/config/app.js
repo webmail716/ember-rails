@@ -6,6 +6,8 @@ require('../vendor/jquery.cookie');
 require('../vendor/handlebars');
 require('../vendor/ember');
 require('../vendor/ember-data');
+// require('../vendor/ember-1.2.0-debug');
+// require('../vendor/ember-data-v1.0.0-beta.3-debug');
 require('../models/unit');
 
 
@@ -105,15 +107,15 @@ App.Store = require('./store'); // delete if you don't want ember-data
 // });
 
 
-// App.SearchParams = Ember.Object.extend({
-// 	min_bedrooms:   0,
-// 	max_bedrooms:   0,
-// 	min_bathrooms:  0,
-// 	max_bathrooms:  0,
-// 	min_price:      0,
-// 	max_price:      0,
-// 	for_sale:       'f'
-// });
+App.SearchParams = Ember.Object.extend({
+	min_bedrooms:   0,
+	max_bedrooms:   0,
+	min_bathrooms:  0,
+	max_bathrooms:  0,
+	min_price:      0,
+	max_price:      0,
+	for_sale:       'f'
+});
 
 // App.UnitsRoute = Ember.Route.extend({});
 
@@ -254,6 +256,7 @@ App.UploadFileView_Image = Ember.TextField.extend({
 
 
 module.exports = App;
+
 
 // App.UnitRoute = Ember.Route.extend({
 //   model: function(model) {

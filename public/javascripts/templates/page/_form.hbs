@@ -1,0 +1,18 @@
+
+  <div {{bindAttr class=":controls errors.title:error"}}>
+    <label>Title</label>
+    {{input type="text" value=title placeholder="Title"}}
+    <small class="below">{{errors.title}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.slug:error"}}>
+    <label>Slug</label>
+    {{input type="text" value=slug placeholder="Slug"}}
+    <small class="below">{{errors.slug}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.content_area:error"}}>
+    <label>Content area</label>
+    {{textarea value=content_area placeholder="Content area"}}
+    <small class="below">{{errors.content_area}}</small>
+  </div>

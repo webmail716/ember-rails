@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="navbar">
     <div class="navbar-inner">
@@ -5,15 +6,18 @@
       <ul class="nav">
         <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
         <li>{{#linkTo 'top_secret'}}Top Secret{{/linkTo}}</li>
-
+        <li>{{#linkTo "units"}}Units{{/linkTo}}</li>
+        
         {{#if isAuthenticated}}
 
           <li><a href="#">{{currentUser.email}}</a></li>
           <li><a href="#" {{action 'logout'}}>Logout</a></li>
           
-          <li>{{#linkTo "units"}}Units{{/linkTo}}</li>
+          
           <li>{{#linkTo "contacts"}}Contacts{{/linkTo}}</li>
           <li>{{#linkTo "images"}}Images{{/linkTo}}</li>
+          <li>{{#linkTo "properties"}}Properties{{/linkTo}}</li>
+          <li>{{#linkTo "pages"}}Pages{{/linkTo}}</li>
         {{else}}
 
           <li>{{#linkTo 'users.new'}}Register{{/linkTo}}</li>
@@ -26,3 +30,6 @@
 
   {{outlet}}
 </div>
+
+
+

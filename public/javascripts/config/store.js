@@ -7,6 +7,14 @@
 //   adapter: DS.LSAdapter.create()
 // });
 
+// http://stackoverflow.com/questions/10875285/where-do-i-specify-the-pluralization-of-a-model-in-ember-data
+DS.RESTAdapter.configure("plurals", { property: "properties" });
+
+DS.RESTAdapter.configure('App.Unit', {
+    sideloadsAs: 'units'
+});
+
 module.exports = DS.Store.extend({
+  // adapter: DS.RESTAdapter.create({plurals: {"property": "properties"}})
   adapter: DS.RESTAdapter.create()
 });
