@@ -1,0 +1,44 @@
+  <div class="side_content">
+      <div class="col_wrapper">
+          <div class="span5">
+              <p>
+                  {{unit.property.street}} <br/>
+                  {{unit.property.city}}, {{unit.property.state}} {{unit.property.zip}} <br/>
+                  {{ unit.property.neighborhood }} <br/>
+                  {{ unit.bedrooms }} Bedroom | {{ unit.bathrooms }} Bathroom
+              </p>
+
+              <span class="detail_price">{{ unit.price }}</span>
+              <span class="detail_id">LISTING ID: {{ unit.listing_id }}</span>
+          </div>
+
+          {{#if unit.floor_plan_photo }}
+	          <div class="span5 floorplan_image">
+              <h3>floor plan</h3>
+            	<a href="/" class="lightbox"><img src="{{ unit.floor_plan_photo.photo.url }}" width=178 height=165/></a>
+            	<a href="" class="enlarge_btn">enlarge image</a>
+	          </div>
+	        {{/if}}
+      </div>
+
+
+      <div class="col_wrapper" id="details_widget">
+          <div class="span3"><a href="/" class="btn">apply now(pdf)</a></div>
+          <div class="span3"><a href="/" class="btn">e-brochure</a></div>
+          <div class="span3 last"><a href="/" class="btn">schedule a visit</a></div>
+      </div>
+
+      {{{ unit.description }}}
+
+      <div class="col_wrapper">
+          <div class="span5">
+              <h3>Apartment amenities</h3>
+              {{{unit.amenity_list}}}
+          </div>
+
+          <div class="span5">
+              <h3>Building amenities</h3>
+              {{{ unit.property.amenity_list }}}
+          </div>
+      </div>
+  </div>
