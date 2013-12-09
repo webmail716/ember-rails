@@ -28,7 +28,33 @@
     </div>
   </div>
 
-  {{outlet}}
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header>
+            <div class="wrapper">
+
+                <a href="/" id="logo">
+                    <img src="img/logo.png" title="Maxx Realty Logo" />
+                </a>
+
+                {{main-nav}}
+
+                {{search-nav}}
+
+{{!--                 <section id="feature_header">
+                    <img src="img/home-header.jpg">
+                </section>
+ --}}
+            </div>
+
+        </header>
+
+        {{outlet}}
+
+        {{page-footer}}
 </div>
 
 

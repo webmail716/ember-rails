@@ -1,0 +1,36 @@
+<h2>Contact Us</h2>
+
+<form {{action "createContactRequest" on="submit"}}>
+
+  <div {{bindAttr class=":controls errors.name:error"}}>
+    <label>Name</label>
+    {{input type="text" value=name placeholder="Name"}}
+    <small class="below">{{errors.name}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.email:error"}}>
+    <label>Email</label>
+    {{input type="text" value=email placeholder="Email"}}
+    <small class="below">{{errors.email}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.phone:error"}}>
+    <label>Phone</label>
+    {{input type="text" value=phone placeholder="Phone"}}
+    <small class="below">{{errors.phone}}</small>
+  </div>
+
+  <div {{bindAttr class=":controls errors.message:error"}}>
+    <label>Message</label>
+    {{textarea value=message placeholder="Message"}}
+    <small class="below">{{errors.message}}</small>
+  </div>
+
+  <div>
+    <label>Method of Contact Preferred:</label>
+    {{view Ember.Select contentBinding="contact_methods" value=contact_method}}  
+  </div>
+
+  <button type="submit">Submit</button>
+	
+</form>

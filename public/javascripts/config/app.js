@@ -114,7 +114,8 @@ App.SearchParams = Ember.Object.extend({
 	max_bathrooms:  0,
 	min_price:      0,
 	max_price:      0,
-	for_sale:       'f'
+	for_sale:       'f',
+  for_rent:       'f'
 });
 
 // App.UnitsRoute = Ember.Route.extend({});

@@ -1,12 +1,12 @@
 <h1>unit index page</h1>
-	{{#if isEditing}}
+{{!-- 	{{#if isEditing}}
 		{{partial "unit/form"}}
 		<button {{action 'done'}}>Done</button>
 	{{else}}
 		<button {{action 'edit'}}>Edit</button>
 	{{/if}}
-
-{{unit-details unit=this}}	
-{{partial "unit/actions" }}
+ --}}
+{{unit-details-page unit=this}}	
+{{!-- {{partial "unit/actions" }} --}}
 
 {{!-- {{view App.UnitView unitBinding=unit}} --}}

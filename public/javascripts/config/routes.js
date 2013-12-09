@@ -11,9 +11,9 @@ App.Router.map(function() {
 
   
 	this.resource("units", function() {
-		this.route("index");
+		this.route("index", { path: "index"} );
 		this.route("new");
-		this.route("search");
+		this.route("search", { path: "search/:query_type"});
 
 		this.resource("unit", { path: "" }, function() {
 		// this.resource("unit", { path: ":unit_id" }, function() {
@@ -56,11 +56,17 @@ App.Router.map(function() {
 
 		this.resource("page", { path: "" }, function() {
 			this.route("index", { path: ":page_id" });
+			this.route("render", { path: ":page_id/render" });
 		});
 	});
 	
+	this.resource("contact_requests", function() {
+		this.route("new");
+		this.route("thank_you");
+	});
+
 	this.resource("home", function() {
-		this.route("show", { path: ":slug_id" });
+		this.route("show", { path: ":slug" });
 	});
 
 

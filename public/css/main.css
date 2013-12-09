@@ -120,6 +120,12 @@ h1 {
     font-weight: 400;
 }
 
+h3 {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 p {
     font-size: 15px;
     line-height: 36px;
@@ -132,6 +138,7 @@ sup {
 
 .wrapper {
     width: 1024px;
+    max-width: 1024px;
     margin: auto;
     display: table;
 }
@@ -206,6 +213,9 @@ sup {
     background: #fff;
     border: 3px solid #e1e1e1;
     padding: 27px 34px;
+    display: table;
+    width: 955px;
+    max-width: 975px;
 }
 
 
@@ -254,6 +264,213 @@ sup {
     background: #000;
 }
 
+/***Details Page***/
+
+body#page_details {
+    padding:  24px;
+    margin-top: 8px;
+    width: 975px;
+}
+
+body#page_details p {
+    line-height: 24px;
+}
+
+.detail_price, .detail_id {
+    display: block;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+#main_body .sidebar {
+    width: 287px;
+    float: left;
+    margin-right: 20px;
+}
+
+#main_body .side_content {
+    width: 668px;
+    float: left;
+}
+
+.gallery_list {
+    padding: 0px;
+    margin: 0px;
+    display: table;
+}
+
+.image_large {
+    border: 4px solid #bdbdbd;
+    margin-bottom: 12px;
+}
+
+.gallery_list li {
+    list-style: none;
+    float: left;
+}
+
+.gallery_list li {
+    border: 3px solid #bdbdbd;
+    margin-right: 7px;
+    margin-bottom: 7px
+}
+
+.gallery_list li:nth-child(3n+3) {
+    margin-right: 0px;
+}
+
+.amenity_list {
+    padding: 0px;
+    margin: 10px 0px 0px 5px;
+
+}
+
+.amenity_list li {
+    background: url('../img/green-arrow.png') no-repeat 0px 6px; 
+    list-style: none;
+    padding-left: 22px;
+    line-height: 25px;
+}
+
+.col_wrapper {
+    display: table;
+    clear: both;
+    width: 100%;
+}
+.span3 {
+    width: 30%;
+    float: left;
+    margin-right: 5%;
+}
+
+.span5{
+    width: 50%;
+    float: left;
+}
+
+.span5.floorplan_image {
+    padding-left: 23%;
+    width: 27%;
+}
+
+.span5.floorplan_image h3 {
+    margin-bottom: 7px;
+}
+
+.last {
+    margin-right: 0px !important;
+}
+
+#details_widget {
+    margin-top: 15px;
+}
+
+.enlarge_btn {
+    background: url("../img/icon-plus.png") no-repeat scroll 0 4px rgba(0, 0, 0, 0);
+    color: #8B9265;
+    display: block;
+    margin-top: 10px;
+    padding-left: 24px;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.google_map {
+    margin: 15px 0px
+}
+
+#calculator {
+    background: none repeat scroll 0 0 #F0F0F0;
+    padding: 20px;
+    font-size: 15px;
+}
+
+.cal td {
+    padding: 5px 0px;
+}
+
+.cal label {
+    font-size: 15px;
+    margin-bottom: 3px;
+    display: block;
+}
+
+.cal input[type="text"] {
+    width: 100%;
+}
+
+.cal input.sm-input[type="text"] {
+    width: 30%;
+}
+
+.cal input.md-input[type="text"] {
+    width: 70%;
+}
+
+.cal-btn {
+    text-align: right;
+    margin: 10px 0px;
+    float: right;
+}
+
+
+
+.contactform {
+    width: 640px;
+    float: left;
+}
+
+.address {
+    width: 210px;
+    float: left;
+    padding-left: 75px;
+}
+
+.address p {
+    margin-top: -5px;
+}
+
+#contact label {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+#contact .span5 {
+    padding: 0px 22px;
+    width: 42%;
+}
+
+#contact input[type="text"] {
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    border: 1px solid #8b9265;
+    margin-bottom: 10px;f
+}
+
+#contact textarea {
+    width: 100%;
+    height: 175px;
+    line-height: 34px;
+    border: 1px solid #8b9265;
+    margin-bottom: 10px;
+}
+
+#contact .submit {
+    text-align: right;
+    float: right;
+}
+
+#contact select {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+/***Footer***/
 footer {
     background: url('../img/cross-pattern.png') 0 1px repeat-x;
     width: 100%;
