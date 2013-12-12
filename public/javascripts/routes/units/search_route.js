@@ -31,6 +31,7 @@ console.log("in units search route");
 
 	setupController: function(controller, model){
 	  controller.set('model', model);
+	  controller.set('isAuthenticated', App.AuthManager.isAuthenticated());
   },
 
 	// renderTemplate: function() {

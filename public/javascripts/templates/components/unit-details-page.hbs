@@ -9,13 +9,13 @@
         <div class="wrapper">
             <section id="main_body">
 
-            	{{unit-side-bar}}
+                {{unit-side-bar unit=unit}}
 
               {{unit-side-content unit=unit}}
 
             </section>
         </div>
-
+{{#linkTo 'unit.edit' unit}}Edit this unit{{/linkTo}}
         {{!-- <%= render :partial => "footer" %> --}}
 
         {{!-- <%#= render :partial => "javascripts" %>   --}}

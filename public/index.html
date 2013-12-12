@@ -2,17 +2,90 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
 
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+
+         <script>
+            $.noConflict();
+            jQuery(document).ready(function($){
+
+                $( "#slider-range" ).slider({
+                    range: true,
+                    min: 0,
+                    max: 500,
+                    values: [ 75, 300 ],
+                    slide: function( event, ui ) {
+                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                    }
+                });
+                
+                $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+                $('.add').on('click',function(){
+                    var $qty=$(this).closest('p').find('.qty');
+                    var currentVal = parseInt($qty.val());
+                    if (!isNaN(currentVal)) {
+                        $qty.val(currentVal + 1);
+                    }
+                });
+                $('.minus').on('click',function(){
+                    var $qty=$(this).closest('p').find('.qty');
+                    var currentVal = parseInt($qty.val());
+                    if (!isNaN(currentVal) && currentVal > 0) {
+                        $qty.val(currentVal - 1);
+                    }
+                });
+            
+
+                var searchbtn = $('.apt-rent');
+                var searchbox = $('.search-filter');
+
+                searchbtn.click(function(event){
+                  event.preventDefault();
+                });
+
+                searchbtn.hover(function() {
+                    $(this).data("hovered", true);
+                    searchbox.stop(true, true);
+                    searchbox.slideDown();
+                }, function() {
+                    searchbox.stop(true, true);
+                    searchbox.slideUp();
+                });
+
+                searchbox.on('mouseover',function() {
+                    $(this).data("hovered", true);
+                    if ( $(this).data("hovered") ) {
+                        searchbox.stop(true, true);
+                        searchbox.css('display', 'block');
+                    }
+                });
+
+                searchbox.on('mouseleave',function() {
+                    $(this).data("hovered", false);
+                    if ( $(this).data("hovered") == false ) {
+                        searchbox.stop(true, true);
+                        searchbox.slideUp();
+                    }
+                });
+
+            });
+        </script>
+        
         
 	<title>Ember App</title>
 </head>
-<body id="page_details">
+<body id="">
   <script src="javascripts/application.js"></script>
 </body>
 </html>

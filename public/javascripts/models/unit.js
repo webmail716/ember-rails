@@ -35,6 +35,10 @@ var Unit = DS.Model.extend({
 
     amenity_list:       DS.attr('string'),
 
+    ebrochure:          DS.attr('string'),
+
+    apply_now:          DS.attr('string'),
+    
     google_map_url:  function() {
     	var map_url = "http://maps.googleapis.com/maps/api/staticmap?";
     	return map_url + "center=" + this.get('lat') + "," + this.get('lon');

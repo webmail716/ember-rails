@@ -1,12 +1,17 @@
         <div class="wrapper">
             <section id="main_body">
-                <h1>Welcome to Maxx Realty</h1>
-                <p>
-                    Maecenas ut euismod massa. Sed elit dolor, viverra ac arcu at, posuere volutpat turpis. Suspendisse et nunc id lorem gravida molestie eget vel dui. Praesent eget quam massa. Maecenas volutpat dui in neque sodales, eu consequat libero porttitor. Etiam pellentesque, nunc vehicula ultrices imperdiet, nulla mi sagittis nisl, at sodales neque ante non leo. Ut turpis metus, faucibus vitae tellus sed, tincidunt posuere erat. Cras at varius ipsum.
-                </p>
+                {{#if page}}
+                    {{{page.content_area}}}
+                {{else}}
+                    <h1>Welcome to Maxx Realty</h1>
+                    <p>
+                        Maecenas ut euismod massa. Sed elit dolor, viverra ac arcu at, posuere volutpat turpis. Suspendisse et nunc id lorem gravida molestie eget vel dui. Praesent eget quam massa. Maecenas volutpat dui in neque sodales, eu consequat libero porttitor. Etiam pellentesque, nunc vehicula ultrices imperdiet, nulla mi sagittis nisl, at sodales neque ante non leo. Ut turpis metus, faucibus vitae tellus sed, tincidunt posuere erat. Cras at varius ipsum.
+                    </p>
 
-                <p>
-                    Praesent eget quam massa. Maecenas volutpat dui in neque sodales, eu consequat libero porttitor. Etiam pellentesque, nunc vehicula ultrices imperdiet, nulla mi sagittis nisl, at sodales neque ante non leo.
-                </p>
+                    <p>
+                        Praesent eget quam massa. Maecenas volutpat dui in neque sodales, eu consequat libero porttitor. Etiam pellentesque, nunc vehicula ultrices imperdiet, nulla mi sagittis nisl, at sodales neque ante non leo.
+                    </p>
+
+                {{/if}}
             </section>
         </div>

@@ -16,7 +16,7 @@ var UnitsNewController = Ember.ObjectController.extend({
         var unit = this.get('model');
         var sc = this.get('selectedContact');
         if (sc != null) {
-            alert("selected contact = " + sc);
+            // alert("selected contact = " + sc);
             // unit.contact = App.Contact.find(sc.id);
             unit.set('contact', App.Contact.find(sc.id));
         }
@@ -28,7 +28,7 @@ var UnitsNewController = Ember.ObjectController.extend({
 
         unit.save();
         unit.get("store").commit();
-        router.transitionTo("units.index");
+        router.transitionTo("units.search");
       }
 
       //   createUnitAjax: function() {

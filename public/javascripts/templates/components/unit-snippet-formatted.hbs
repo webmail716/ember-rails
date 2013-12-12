@@ -1,6 +1,6 @@
 <div class="sale_list">
     <div class="col list_image">
-        <img src="img/house-list1.jpg" />
+        <img src="/assets/house-list1.jpg" />
 {{!--         <img {{bind-attr src="unit.images.image" }} width=150 height=150/>
 
         {{#each im in unit.images}}
@@ -20,7 +20,8 @@
     </div>
     <div class="col list_visit">
         <a href="/" class="btn">Schedule a visit</a>
-        <a href="/" class="btn">More Details</a>
-        {{#linkTo 'unit.index' unit}}More{{/linkTo}}
+        {{#linkTo 'contact_requests.new' class="btn"}}Sched{{/linkTo}}
+        {{#linkTo 'unit.index' unit class="btn"}}More Details{{/linkTo}}
+        {{#linkTo 'unit.edit' unit}}Edit{{/linkTo}}
     </div>
 </div>

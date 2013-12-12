@@ -1,2 +1,8 @@
-<h2>Index</h2>
+  {{!-- {{page-body page=page}} --}}
+
+  {{#each p in pages}}
+  	{{#if p.isHomePage}}
+  		{{page-body page=p}}
+  	{{/if}}
+  {{/each}}
 

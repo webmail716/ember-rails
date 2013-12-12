@@ -12,20 +12,25 @@
               <span class="detail_id">LISTING ID: {{ unit.listing_id }}</span>
           </div>
 
-          {{#if unit.floor_plan_photo }}
+          {{!-- {{#if unit.floor_plan_photo }} --}}
 	          <div class="span5 floorplan_image">
               <h3>floor plan</h3>
-            	<a href="/" class="lightbox"><img src="{{ unit.floor_plan_photo.photo.url }}" width=178 height=165/></a>
+            	<a href="/" class="lightbox">
+                {{!-- <img src="{{ unit.floor_plan_photo.photo.url }}" width=178 height=165/> --}}
+                <img src="/assets/floorplan.png" width=178 height=165/>
+              </a>
             	<a href="" class="enlarge_btn">enlarge image</a>
 	          </div>
-	        {{/if}}
+	        {{!-- {{/if}} --}}
       </div>
 
 
       <div class="col_wrapper" id="details_widget">
-          <div class="span3"><a href="/" class="btn">apply now(pdf)</a></div>
+          <div class="span3"><a {{bind-attr href=unit.apply_now}} class="btn">apply now(pdf)</a></div>
           <div class="span3"><a href="/" class="btn">e-brochure</a></div>
-          <div class="span3 last"><a href="/" class="btn">schedule a visit</a></div>
+          <div class="span3 last">
+            {{#linkTo 'contact_requests.new' class="btn"}}Schedule a visit{{/linkTo}}
+          </div>
       </div>
 
       {{{ unit.description }}}
@@ -33,12 +38,36 @@
       <div class="col_wrapper">
           <div class="span5">
               <h3>Apartment amenities</h3>
+                            <ul class="amenity_list">
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                            </ul>
               {{{unit.amenity_list}}}
           </div>
 
           <div class="span5">
               <h3>Building amenities</h3>
               {{{ unit.property.amenity_list }}}
+                            <ul class="amenity_list">
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                                <li>Amenity Item</li>
+                            </ul>
           </div>
       </div>
   </div>

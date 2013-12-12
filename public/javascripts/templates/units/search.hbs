@@ -7,10 +7,16 @@
 	<button type="submit">Submit</button>
 </div>
 </form>
+auth2=={{isAuthenticated}}
+{{#if isAuthenticated}}
+	{{#linkTo "units.new"}}New unit{{/linkTo}}
+{{/if}}
+
 <div>
 {{#each unit in results}}
 	{{unit-snippet-formatted unit=unit}}
 {{else}}
 	No results
 {{/each}}
+
 </div>

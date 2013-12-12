@@ -5,11 +5,6 @@ var PropertyIndexController = Ember.ObjectController.extend({
 	// 	return App.Contact.find();
 	// },
 
-	mmm: function() {
-		var property = this.get('model');
-		return property.get('units');
-	},
-
 	isEditing: false, 
 
 	actions: {

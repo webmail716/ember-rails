@@ -1,32 +1,5 @@
 
-<div class="container">
-  <div class="navbar">
-    <div class="navbar-inner">
-      <a class="brand" href="#">Simple Auth</a>
-      <ul class="nav">
-        <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
-        <li>{{#linkTo 'top_secret'}}Top Secret{{/linkTo}}</li>
-        <li>{{#linkTo "units"}}Units{{/linkTo}}</li>
-        
-        {{#if isAuthenticated}}
 
-          <li><a href="#">{{currentUser.email}}</a></li>
-          <li><a href="#" {{action 'logout'}}>Logout</a></li>
-          
-          
-          <li>{{#linkTo "contacts"}}Contacts{{/linkTo}}</li>
-          <li>{{#linkTo "images"}}Images{{/linkTo}}</li>
-          <li>{{#linkTo "properties"}}Properties{{/linkTo}}</li>
-          <li>{{#linkTo "pages"}}Pages{{/linkTo}}</li>
-        {{else}}
-
-          <li>{{#linkTo 'users.new'}}Register{{/linkTo}}</li>
-          <li>{{#linkTo 'sessions.new'}}Login{{/linkTo}}</li>
-
-        {{/if}}
-      </ul>
-    </div>
-  </div>
 
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -34,25 +7,30 @@
 
         <!-- Add your site or application content here -->
         <header>
+          {{admin-nav isAuthenticated=isAuthenticated}}
+
             <div class="wrapper">
 
                 <a href="/" id="logo">
-                    <img src="img/logo.png" title="Maxx Realty Logo" />
+                    <img src="/assets/logo.png" title="Maxx Realty Logo" />
                 </a>
 
                 {{main-nav}}
 
-                {{search-nav}}
-
-{{!--                 <section id="feature_header">
-                    <img src="img/home-header.jpg">
-                </section>
- --}}
             </div>
 
+            {{search-nav}}
         </header>
 
-        {{outlet}}
+        <div class="wrapper">
+          <section id="feature_header">
+              <img src="/assets/home-header.jpg">
+          </section>
+
+          {{outlet}}
+        </div>
+
+        
 
         {{page-footer}}
 </div>

@@ -173,7 +173,7 @@ class UnitsController < ApplicationController
   def unit_params
     params.require(:unit).permit(:bedrooms, :bathrooms, :unit_number, :property_id, :neighborhood, :price,
             :unit_type, :sqft, :description, :lon, :lat, :searchable, :for_sale, :for_rent, :amenity_list,
-            :contact_id)
+            :contact_id, :ebrochure, :apply_now)
 
   end
 end

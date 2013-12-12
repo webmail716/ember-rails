@@ -1,36 +1,54 @@
-<h2>Contact Us</h2>
+<section id="main_body">
+    <h1>Contact Us</h1>
+    <p>Maecenas ut euismod massa. Sed elit dolor, viverra ac arcu at, posuere volutpat turpis. Suspendisse et nunc id lorem gravida molestie eget vel dui. Praesent eget quam massa. Maecenas volutpat dui in neque sodales, eu consequat libero porttitor. Etiam pellentesque, nunc vehicula ultrices imperdiet, nulla mi sagittis nisl, at sodales neque ante non leo. Ut turpis metus, faucibus vitae tellus sed, tincidunt posuere erat. Cras at varius ipsum.</P>
 
-<form {{action "createContactRequest" on="submit"}}>
+        <div class="contactform">
+            <form {{action "createContactRequest" on="submit"}} id="contact">
+            <div class="span5">
+						  <div {{bindAttr class=":controls errors.name:error"}}>
+						    <label>Name</label>
+						    {{input type="text" value=name placeholder="Name"}}
+						    <small class="below">{{errors.name}}</small>
+						  </div>
 
-  <div {{bindAttr class=":controls errors.name:error"}}>
-    <label>Name</label>
-    {{input type="text" value=name placeholder="Name"}}
-    <small class="below">{{errors.name}}</small>
-  </div>
+							<div {{bindAttr class=":controls errors.email:error"}}>
+						    <label>Email</label>
+						    {{input type="text" value=email placeholder="Email"}}
+						    <small class="below">{{errors.email}}</small>
+						  </div>
 
-  <div {{bindAttr class=":controls errors.email:error"}}>
-    <label>Email</label>
-    {{input type="text" value=email placeholder="Email"}}
-    <small class="below">{{errors.email}}</small>
-  </div>
+						  <div {{bindAttr class=":controls errors.phone:error"}}>
+						    <label>Phone</label>
+						    {{input type="text" value=phone placeholder="Phone"}}
+						    <small class="below">{{errors.phone}}</small>
+						  </div>
+            </div>
 
-  <div {{bindAttr class=":controls errors.phone:error"}}>
-    <label>Phone</label>
-    {{input type="text" value=phone placeholder="Phone"}}
-    <small class="below">{{errors.phone}}</small>
-  </div>
+            <div class="span5">
+                <div {{bindAttr class=":controls errors.message:error"}}>
+						    <label>Message</label>
+						    {{textarea value=message placeholder="Message"}}
+						    <small class="below">{{errors.message}}</small>
+						  </div>
 
-  <div {{bindAttr class=":controls errors.message:error"}}>
-    <label>Message</label>
-    {{textarea value=message placeholder="Message"}}
-    <small class="below">{{errors.message}}</small>
-  </div>
+						  <div>
+						    <label>Method of Contact Preferred:</label>
+						    {{view Ember.Select contentBinding="contact_methods" value=contact_method}}  
+						  </div>
+              <input type="image" src="/assets/contact-submit.jpg" class="submit" />
+            </div>
 
-  <div>
-    <label>Method of Contact Preferred:</label>
-    {{view Ember.Select contentBinding="contact_methods" value=contact_method}}  
-  </div>
+            </form>
+        </div>
 
-  <button type="submit">Submit</button>
-	
-</form>
+        <div class="address">
+            <p>
+                MAXX REALTY<br/>
+                600 Mamaroneck Ave.<br/>
+                Harrison, NY 10528<br/>
+                Phone: 914.899.8000<br/>
+                Fax: 914.899.8039
+            </p>
+        </div>
+
+</section>

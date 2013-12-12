@@ -4,5 +4,8 @@ class Unit < ActiveRecord::Base
 
   has_many :images
   
+  has_attached_file :ebrochure
+  has_attached_file :apply_now
+  
   validates :unit_number, presence: true
 end
