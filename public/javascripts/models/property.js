@@ -11,6 +11,8 @@ var Property = DS.Model.extend({
 
     zip:            DS.attr('string'),
 
+    amenity_list:   DS.attr('string'),
+
     neighborhood: 	DS.attr('string')
 
 });

@@ -48,6 +48,6 @@ class PropertiesController < ApplicationController
 
   # Strong Parameters (Rails 4)
   def property_params
-    params.require(:property).permit(:neighborhood, :name, :street, :city, :state, :zip)
+    params.require(:property).permit(:neighborhood, :name, :street, :city, :state, :zip, :amenity_list)
   end
 end

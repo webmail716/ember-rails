@@ -20,7 +20,7 @@ var IndexRoute = Ember.Route.extend({
 		}
 
     controller.set('isAuthenticated', App.AuthManager.isAuthenticated());
-    console.log("in units index route");
+    console.log("in index route");
   }
 });
 

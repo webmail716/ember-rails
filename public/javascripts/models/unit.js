@@ -51,10 +51,15 @@ var Unit = DS.Model.extend({
     featured_image: function() {
         var images = this.get('images');
         if (images != null && images.size > 0) {
-            return images[0];
+            return images.objectAt(0);
         } else {
             return null;
         }
+    }.property('images.@each'),
+
+    firstImage: function() {
+      var images = this.get('images');
+      return images.objectAt(0);
     }.property('images.@each')
 });
 

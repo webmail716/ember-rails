@@ -1,0 +1,21 @@
+
+<table>
+<tr>
+	<th>Name</th>
+	<th>Email</th>
+	<th>Phone</th>
+	<th>Message</th>
+	<th>Contact Method</th>
+	<th></th>
+</tr>
+{{#each cr in controller}}
+<tr>
+	<td>{{cr.name}}</td>
+	<td>{{cr.email}}</td>
+	<td>{{cr.phone}}</td>
+	<td>{{cr.message}}</td>
+	<td>{{cr.contact_method}}</td>
+	<td><button {{ action "destroy" cr}}>Destroy</button></td>
+</tr>
+{{/each}}
+</table>

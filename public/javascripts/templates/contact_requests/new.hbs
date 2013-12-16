@@ -1,6 +1,10 @@
 <section id="main_body">
-    <h1>Contact Us</h1>
-    <p>Maecenas ut euismod massa. Sed elit dolor, viverra ac arcu at, posuere volutpat turpis. Suspendisse et nunc id lorem gravida molestie eget vel dui. Praesent eget quam massa. Maecenas volutpat dui in neque sodales, eu consequat libero porttitor. Etiam pellentesque, nunc vehicula ultrices imperdiet, nulla mi sagittis nisl, at sodales neque ante non leo. Ut turpis metus, faucibus vitae tellus sed, tincidunt posuere erat. Cras at varius ipsum.</P>
+		{{#each page in pages}}
+			{{{page.content_area}}}
+		{{else}}
+	    <h1>Contact Us</h1>
+	    <p>Maecenas ut euismod massa. Sed elit dolor, viverra ac arcu at, posuere volutpat turpis. Suspendisse et nunc id lorem gravida molestie eget vel dui. Praesent eget quam massa. Maecenas volutpat dui in neque sodales, eu consequat libero porttitor. Etiam pellentesque, nunc vehicula ultrices imperdiet, nulla mi sagittis nisl, at sodales neque ante non leo. Ut turpis metus, faucibus vitae tellus sed, tincidunt posuere erat. Cras at varius ipsum.</P>
+		{{/each}}
 
         <div class="contactform">
             <form {{action "createContactRequest" on="submit"}} id="contact">

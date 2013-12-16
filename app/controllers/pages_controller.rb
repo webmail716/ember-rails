@@ -1,6 +1,18 @@
 class PagesController < ApplicationController
   def index
-    render json: { pages: Page.all }
+    ar_query = Page
+    is_query = false
+
+    unless params[:slug].nil?
+      is_query = true
+      ar_query = ar_query.where("slug = ?", params[:slug])
+    end
+
+    if is_query
+      render json: { pages: ar_query }
+    else
+      render json: { pages: Page.all }
+    end
   end
 
   def show

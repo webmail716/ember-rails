@@ -4,6 +4,7 @@
 {{#each image in controller}}
 		<li>Image name: {{image.name}}</li>
 		<li>Image description: {{image.description}}</li>
+		<li>Unit number: {{image.unit.unit_number}}</li>
 		<img {{bind-attr src=image.image}} width=100 height=100/>
 
 		{{#linkTo 'image' image}}Show{{/linkTo}}

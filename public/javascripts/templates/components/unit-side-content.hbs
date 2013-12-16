@@ -8,7 +8,7 @@
                   {{ unit.bedrooms }} Bedroom | {{ unit.bathrooms }} Bathroom
               </p>
 
-              <span class="detail_price">{{ unit.price }}</span>
+              <span class="detail_price">Price: {{ unit.price }}</span>
               <span class="detail_id">LISTING ID: {{ unit.listing_id }}</span>
           </div>
 
@@ -34,6 +34,7 @@
       </div>
 
       {{{ unit.description }}}
+      This is where I will put the description of the unit. This is some dummy content that i am using for styling.
 
       <div class="col_wrapper">
           <div class="span5">
@@ -53,7 +54,7 @@
               {{{unit.amenity_list}}}
           </div>
 
-          <div class="span5">
+          <div class="span5 last">
               <h3>Building amenities</h3>
               {{{ unit.property.amenity_list }}}
                             <ul class="amenity_list">

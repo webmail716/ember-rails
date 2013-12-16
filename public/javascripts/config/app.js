@@ -17,6 +17,46 @@ var App = window.App = Ember.Application.create({
 
 App.Store = require('./store'); // delete if you don't want ember-data
 
+App.SearchNavComponent = Ember.Component.extend({
+  didInsertElement: function() {
+    this.scheduleAlert();
+  },
+
+  scheduleAlert: function() {
+    Ember.run.scheduleOnce('afterRender', this, this.sayHello);
+  },
+
+  sayHello: function() {
+    // alert("Hey Homey!!!");
+  }
+});
+
+App.UnitCalculatorComponent = Ember.Component.extend({
+  didInsertElement: function() {
+    Ember.run.scheduleOnce('afterRender', this, this.initComponent);
+  },
+
+  initComponent: function() {
+    this.$('#mor-amount').click(function() {
+      alert("Clicked MOFO!!!");
+      $('#mor-year').val("blah");
+    });
+  }
+});
+
+App.UnitSideBarComponent = Ember.Component.extend({
+  didInsertElement: function() {
+    Ember.run.scheduleOnce('afterRender', this, this.initComponent);
+  },
+
+  initComponent: function() {
+    this.$('.thumb').click(function() {
+      var src = $(this).attr("src");
+      $('.img_large').attr("src", src);
+    });
+  }
+});
+
 // var UnitRoute = Ember.Route.extend({
 // 	redirect: function() {
 // 		this.transitionTo('unit.index');

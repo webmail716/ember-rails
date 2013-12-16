@@ -56,11 +56,12 @@ App.Router.map(function() {
 
 		this.resource("page", { path: "" }, function() {
 			this.route("index", { path: ":page_id" });
-			this.route("render", { path: ":page_id/render" });
+			this.route("render", { path: ":page_name" });
 		});
 	});
 	
 	this.resource("contact_requests", function() {
+		this.route("index");
 		this.route("new");
 		this.route("thank_you");
 	});

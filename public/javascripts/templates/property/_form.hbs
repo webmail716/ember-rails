@@ -34,3 +34,10 @@
     {{input type="text" value=neighborhood placeholder="Neighborhood"}}
     <small class="below">{{errors.neighborhood}}</small>
   </div>
+
+  <div {{bindAttr class=":controls errors.amenity_list:error"}}>
+    <label>Amenity list</label>
+    {{textarea value=amenity_list placeholder="Amenity list"}}
+    <small class="below">{{errors.amenity_list}}</small>
+  </div>
+
