@@ -6,6 +6,7 @@ require('../vendor/jquery.cookie');
 require('../vendor/handlebars');
 require('../vendor/ember');
 require('../vendor/ember-data');
+require('../vendor/jquery.prettyPhoto');
 // require('../vendor/ember-1.2.0-debug');
 // require('../vendor/ember-data-v1.0.0-beta.3-debug');
 require('../models/unit');
@@ -53,99 +54,34 @@ App.UnitSideBarComponent = Ember.Component.extend({
     this.$('.thumb').click(function() {
       var src = $(this).attr("src");
       $('.img_large').attr("src", src);
+      $('.img_large_link').attr("href", src);
     });
   }
 });
 
-// var UnitRoute = Ember.Route.extend({
-// 	redirect: function() {
-// 		this.transitionTo('unit.index');
-// 	}
-// });
+App.UnitSideContentComponent = Ember.Component.extend({
+  didInsertElement: function() {
+    // Ember.run.scheduleOnce('afterRender', this, this.initComponent);
+    Ember.run.next(this, this.initComponent);
+  },
 
-// App.ContactsController = Ember.ArrayController.extend({
-// 	selectedContact: null
-// 	// itemController: 'contact'
-// });
+  initComponent: function() {
+    this.$("a[rel^='prettyPhoto']").prettyPhoto();
+    alert("hey jonathon");
+    
+    this.$('.detail_price').click(function() {
+      alert("test");
+    });
 
-// App.ContactsRoute = Ember.Route.extend({
-// 	setupController: function(controller, model) {
-// 		controller.set('model', App.Contact.find());
-// 		controller.set('content', App.Contact.find());
-// 	}
-// });
+    this.$('.light').click(function() {
+      alert("test");
+    });
+  }
+});
 
-// App.ContactsSelectController = Ember.ArrayController.extend({
-// 	selectedContact: null
-// 	// itemController: 'contact'
-// });
-
-// App.ContactsSelectRoute = Ember.Route.extend({
-// 	setupController: function(controller, model) {
-// 		controller.set('model', App.Contact.find());
-// 		controller.set('content', App.Contact.find());
-// 	}
-// });
-
-// contacts: Ember.Object.create({
-// 	selected: null,
-// 	content: App.Contact.find()
-// });
-
-// JG - borrowed from http://stackoverflow.com/questions/15049904/using-ember-select-bound-to-an-arraycontroller-that-has-an-itemcontroller
-
-// App.ContactsSelectView = Ember.Select.extend({
-// 	model: 'App.Contact.find()',
-// 	contentBinding: 'App.Contact.find()',
-// 	prompt: "Choose a contact",
-// 	selectionBinding: 'selectedContact',
-// 	optionLabelPath: 'content.name',
-// 	optionValuePath: 'content.id'
-// });
-
-// App.Unit = DS.Model.extend({
-// 	contact:     DS.belongsTo('App.Contact'),
-
-//     unit_number: DS.attr('string'),
-
-//     bedrooms: 			DS.attr('number'),
-
-//     bathrooms: 			DS.attr('number'),
-
-//     neighborhood: 	DS.attr('string'),
-
-//     price: 					DS.attr('number'),
-
-//     for_rent: 			DS.attr('boolean'),
-
-//     for_sale: 			DS.attr('boolean'),
-
-//     // biography: 			DS.attr('string'),
-
-//     lat: 						DS.attr('number'),
-
-//     lon: 						DS.attr('number'),
-
-//     sqft:            DS.attr('number'),
-
-//     unit_type:       DS.attr('string'), //commercial or residential
-
-//     description:     DS.attr('string'),
-
-//     searchable:      DS.attr('boolean'),
-
-//     amenity_list:    DS.attr('string'),
-
-//     google_map_url:  function() {
-//     	var map_url = "http://maps.googleapis.com/maps/api/staticmap?";
-//     	return map_url + "center=" + this.get('lat') + "," + this.get('lon');
-//     }.property('lat', 'lon'),
-
-//     google_map_link: function() {
-//     	return "<a href='" + google_map_url + "'>Click here</a>";
-//     }.property('google_map_url')
-// });
-
+Handlebars.registerHelper('formatCurrency', function(value) {
+    return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+});
 
 App.SearchParams = Ember.Object.extend({
 	min_bedrooms:   0,
@@ -294,55 +230,4 @@ App.UploadFileView_Image = Ember.TextField.extend({
 //     }
 // });
 
-
-
 module.exports = App;
-
-
-// App.UnitRoute = Ember.Route.extend({
-//   model: function(model) {
-//     return App.Unit.find(model.unit_id);
-//   }
-// });
-
-
-// App.UnitsController = Ember.ArrayController.extend({
-// 	model: function() {
-// 		App.Unit.find();
-// 	}
-// });
-
-// 	// needs: ['unit.destroy']
-// // 	actions: {
-// // 	  destroy: function() {
-// // 	  	var router = this.get('target');
-	  	
-// // 	  	var unit = this.get('model');
-// // 	  	var data = { id: unit.id, _method: 'delete' };
-// // alert("unit=" + unit);
-// // 	  	$.post('/units', data, function(results) {
-// // 	  		router.transitionTo('units');
-// // 	  	}).fail(function(jqxhr, textStatus, error) {
-// // 	      if (jqxhr.status === 422) {
-// // 	        errs = JSON.parse(jqxhr.responseText)
-// // 	        unit.set('errors', errs.errors);
-// // 	      }
-// // 	  	});
-// // 		}
-
-	  	// $.ajax({url: '/units/' + unit.id, 
-	  	// 				data: data, 
-	  	// 				type: 'DELETE',
-	  	// 				success: function(results) {
-	  	// 										store.find('unit', unit.id).then(function(rec) {
-	  	// 											rec.deleteRecord();
-	  	// 											rec.save();
-	  	// 										});
-	  	// 										router.transitionTo('units.index');
-	  	// }}).fail(function(jqxhr, textStatus, error) {
-	  	// 	alert("destroy fail");
-	   //    if (jqxhr.status === 422) {
-	   //      errs = JSON.parse(jqxhr.responseText)
-	   //      unit.set('errors', errs.errors);
-	   //    }
-	  	// });

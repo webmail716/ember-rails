@@ -15,60 +15,43 @@
           {{!-- {{#if unit.floor_plan_photo }} --}}
 	          <div class="span5 floorplan_image">
               <h3>floor plan</h3>
-            	<a href="/" class="lightbox">
-                {{!-- <img src="{{ unit.floor_plan_photo.photo.url }}" width=178 height=165/> --}}
-                <img src="/assets/floorplan.png" width=178 height=165/>
-              </a>
-            	<a href="" class="enlarge_btn">enlarge image</a>
+            	{{!-- <a href="/" class="lightbox"> --}}
+
+                {{#each image in unit.images}}
+                  {{#if image.is_floorplan}}
+                    <a {{bindAttr href=image.image}} rel=prettyPhoto target="_blank">
+                      <img {{bindAttr src=image.image }} width=178 height=165 class="light" rel=prettyPhoto />
+                    </a>
+
+                    <a {{bindAttr href=image.image}} target="_blank" class="enlarge_btn">enlarge image</a>
+                  {{/if}}
+                {{/each}}
+
+            	
 	          </div>
 	        {{!-- {{/if}} --}}
       </div>
 
 
       <div class="col_wrapper" id="details_widget">
-          <div class="span3"><a {{bind-attr href=unit.apply_now}} class="btn">apply now(pdf)</a></div>
-          <div class="span3"><a href="/" class="btn">e-brochure</a></div>
+          <div class="span3"><a href="/assets/apply_now.pdf" class="btn">apply now(pdf)</a></div>
+          <div class="span3"><a href="/assets/e-brochure.pdf" class="btn">e-brochure</a></div>
           <div class="span3 last">
             {{#linkTo 'contact_requests.new' class="btn"}}Schedule a visit{{/linkTo}}
           </div>
       </div>
 
       {{{ unit.description }}}
-      This is where I will put the description of the unit. This is some dummy content that i am using for styling.
 
       <div class="col_wrapper">
           <div class="span5">
               <h3>Apartment amenities</h3>
-                            <ul class="amenity_list">
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                            </ul>
               {{{unit.amenity_list}}}
           </div>
 
           <div class="span5 last">
               <h3>Building amenities</h3>
               {{{ unit.property.amenity_list }}}
-                            <ul class="amenity_list">
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                                <li>Amenity Item</li>
-                            </ul>
           </div>
       </div>
   </div>

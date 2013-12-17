@@ -11,6 +11,12 @@
     <small class="below">{{errors.description}}</small>
   </div>
 
+  <div {{bindAttr class=":controls errors.is_floorplan:error"}}>
+    <label>Floorplan image:</label>
+    {{input type="checkbox" name=is_floorplan checked=is_floorplan}}
+    <small class="below">{{errors.is_floorplan}}</small>
+  </div>
+
   <div>
     <label>Unit</label>
     {{view Ember.Select contentBinding="units" optionValuePath="content.id" optionLabelPath="content.unit_number" selectionBinding="selectedUnit" prompt="Choose a unit" value=selectedUnit.id}}  

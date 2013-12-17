@@ -1,5 +1,5 @@
 <h1>unit edit page</h1>
-{{unit-snippet-formatted unit=this}}
+{{unit-snippet-formatted unit=this isAuthenticated=isAuthenticated}}
 	{{#if isEditing}}
 		{{partial "unit/form"}}
 		<button {{action 'done'}}>Done</button>

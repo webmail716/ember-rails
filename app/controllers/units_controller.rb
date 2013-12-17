@@ -68,17 +68,17 @@ class UnitsController < ApplicationController
 
   def query_bedrooms
     #return the query string, or nil if the params needed for this query weren't sent.
-    "#{params[:min_bedrooms]}:#{params[:max_bedrooms]}" if params[:min_bedrooms] && params[:max_bedrooms]
+    "#{params[:min_bedrooms]}:#{params[:max_bedrooms]}" if (params[:min_bedrooms] || params[:max_bedrooms])
   end
 
   def query_bathrooms
     #return the query string, or nil if the params needed for this query weren't sent.
-    "#{params[:min_bathrooms]}:#{params[:max_bathrooms]}" if params[:min_bathrooms] && params[:max_bathrooms]
+    "#{params[:min_bathrooms]}:#{params[:max_bathrooms]}" if (params[:min_bathrooms] || params[:max_bathrooms])
   end
 
   def query_price
     #return the query string, or nil if the params needed for this query weren't sent.
-    "#{params[:min_price]}:#{params[:max_price]}" if params[:min_price] && params[:max_price]
+    "#{params[:min_price]}:#{params[:max_price]}" if (params[:min_price] || params[:max_price])
   end
 
   def query_neighborhood
@@ -124,7 +124,8 @@ class UnitsController < ApplicationController
       if bathrooms.include?(":")
         #bedrooms value is a range
         vals = bathrooms.split(":")
-        ar_query = ar_query.where("bathrooms >= ?", vals[0].to_i).where("bathrooms <= ?", vals[1].to_i)
+        ar_query = ar_query.where("bathrooms >= ?", vals[0].to_i) if vals[0].to_i > 0
+        ar_query = ar_query.where("bathrooms <= ?", vals[1].to_i) if vals[1].to_i > 0
       else
         ar_query = ar_query.where("bathrooms = ?", bathrooms)
       end
@@ -173,7 +174,7 @@ class UnitsController < ApplicationController
   def unit_params
     params.require(:unit).permit(:bedrooms, :bathrooms, :unit_number, :property_id, :neighborhood, :price,
             :unit_type, :sqft, :description, :lon, :lat, :searchable, :for_sale, :for_rent, :amenity_list,
-            :contact_id, :ebrochure, :apply_now)
+            :contact_id)
 
   end
 end

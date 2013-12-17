@@ -15,7 +15,10 @@
 
             </section>
         </div>
-{{#linkTo 'unit.edit' unit}}Edit this unit{{/linkTo}}
+
+        {{#if isAuthenticated}}
+            {{#linkTo 'unit.edit' unit}}Edit this unit{{/linkTo}}
+        {{/if}}
         {{!-- <%= render :partial => "footer" %> --}}
 
         {{!-- <%#= render :partial => "javascripts" %>   --}}

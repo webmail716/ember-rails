@@ -3,6 +3,7 @@ var App = require('./app');
 App.Router.map(function() {
   this.resource('sessions', function() {
     this.route('new');
+    this.route("quit");
   });
   this.resource('users', function() {
     this.route('new');

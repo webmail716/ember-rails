@@ -21,6 +21,9 @@
     <div class="col list_visit">
         {{#linkTo 'contact_requests.new' class="btn"}}Schedule a visit{{/linkTo}}
         {{#linkTo 'unit.index' unit class="btn"}}More Details{{/linkTo}}
-        {{#linkTo 'unit.edit' unit}}Edit{{/linkTo}}
+        
+        {{#if isAuthenticated}}
+          {{#linkTo 'unit.edit' unit}}Edit{{/linkTo}}
+        {{/if}}
     </div>
 </div>

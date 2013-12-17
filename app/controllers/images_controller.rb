@@ -54,7 +54,7 @@ class ImagesController < ApplicationController
 
   # Strong Parameters (Rails 4)
   def image_params
-    params.require(:image).permit(:name, :description, :unit_id, :image)
+    params.require(:image).permit(:name, :description, :unit_id, :image, :is_floorplan)
   end
 
 end

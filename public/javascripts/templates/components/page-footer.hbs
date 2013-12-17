@@ -5,6 +5,11 @@
                     <li>{{#linkTo 'page.render' 'management'}}Management{{/linkTo}}</li>
                     <li>{{#linkTo 'page.render' 'careers'}}Careers{{/linkTo}}</li>
                     <li>{{#linkTo 'contact_requests.new' }}Contact Us{{/linkTo}}</li>
+                    {{#if isAuthenticated}}
+                        <li>{{#linkTo 'sessions.quit'}}Logout{{/linkTo}}</li>
+                    {{else}}
+                        <li>{{#linkTo 'sessions.new'}}Login{{/linkTo}}</li>
+                    {{/if}}
                     <li><span>|</span></li>
                     <li><a href="/">&#64;2013 Maxx Realty</a></li>
                     <li><span>|</span></li>

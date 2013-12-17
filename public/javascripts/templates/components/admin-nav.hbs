@@ -1,29 +1,25 @@
+
+{{#if isAuthenticated}}
 <div class="container">
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="#">Simple Auth</a>
+      {{!-- <a class="brand" href="#">Simple Auth</a> --}}
       <ul class="nav">
         <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
-        <li>{{#linkTo 'top_secret'}}Top Secret{{/linkTo}}</li>
-        <li>{{#linkTo "units"}}Units{{/linkTo}}</li>
-        auth={{isAuthenticated}}
-        {{#if isAuthenticated}}
-
-          <li><a href="#">{{currentUser.email}}</a></li>
-          <li><a href="#" {{action 'logout'}}>Logout</a></li>
-          
+        
+          <li>{{#linkTo 'users.new'}}Register{{/linkTo}}</li>
+          <li>{{#linkTo 'sessions.quit'}}Logout{{/linkTo}}</li>
           
           <li>{{#linkTo "contacts"}}Contacts{{/linkTo}}</li>
+          <li>{{#linkTo "units"}}Units{{/linkTo}}</li>
           <li>{{#linkTo "images"}}Images{{/linkTo}}</li>
           <li>{{#linkTo "properties"}}Properties{{/linkTo}}</li>
           <li>{{#linkTo "pages"}}Pages{{/linkTo}}</li>
           <li>{{#linkTo "contact_requests"}}Contact Requests{{/linkTo}}</li>
-        {{else}}
-
-          <li>{{#linkTo 'users.new'}}Register{{/linkTo}}</li>
-          <li>{{#linkTo 'sessions.new'}}Login{{/linkTo}}</li>
-
-        {{/if}}
+          
+          {{!-- <li>{{#linkTo 'sessions.new'}}Login{{/linkTo}}</li> --}}
       </ul>
     </div>
   </div>
+
+{{/if}}

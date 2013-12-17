@@ -3,7 +3,9 @@
 
           <div class="image_large">
             {{!-- <img class='img_large' src="/assets/photo-large.jpg" width=279 height=303/> --}}
-            <img class='img_large' {{bind-attr src=unit.firstImage.image}} width=279 height=303/>
+            <a class="img_large_link" target="_blank" {{bind-attr href=unit.firstImage.image}}>
+              <img class='img_large' {{bind-attr src=unit.firstImage.image}} width=279 height=303/>
+            </a>
           </div>
 
           <ul class="gallery_list">
@@ -20,9 +22,12 @@
             <li><a href="#"><img src="/assets/photo-small.jpg" width=84 height=67/></a></li>
  --}}          </ul>
 
-      <a href="/" class="btn google_map">
-          google map
-      </a>
+
+      {{#if unit.property.isLoaded}}
+        <a {{bind-attr href=unit.google_map_url}} class="btn google_map" target="_blank">
+            google map
+        </a>
+      {{/if}}
 
       {{unit-calculator}}
 

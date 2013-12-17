@@ -21,7 +21,16 @@ var IndexRoute = Ember.Route.extend({
 
     controller.set('isAuthenticated', App.AuthManager.isAuthenticated());
     console.log("in index route");
-  }
+  },
+
+	actions: {
+    logout: function() {
+    	alert("erasfdasd");
+      App.AuthManager.reset();
+      this.transitionTo('index');
+    }
+  }  
+
 });
 
 module.exports = IndexRoute;

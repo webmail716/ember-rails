@@ -1,5 +1,5 @@
-var User = require('./user');
-var App = require('../config/app');
+var User = require('../models/user');
+var App = require('./app');
 
 var AuthManager = Ember.Object.extend({
 
