@@ -1,27 +1,21 @@
   <div class="sidebar">
       <div class="gallery">
 
+        {{!-- {{#if unit.firstImage.isLoaded}} --}}
           <div class="image_large">
-            {{!-- <img class='img_large' src="/assets/photo-large.jpg" width=279 height=303/> --}}
+            
             <a class="img_large_link" target="_blank" {{bind-attr href=unit.firstImage.image}}>
               <img class='img_large' {{bind-attr src=unit.firstImage.image}} width=279 height=303/>
             </a>
+
           </div>
 
+        {{!-- {{/if}} --}}
+ 
           <ul class="gallery_list">
-
             {{#each image in unit.images}}
-              <li><img class='thumb' {{bind-attr src=image.image}} width=84 height=67/></li>
+                <li><img class='thumb' {{bind-attr src=image.image}} width=84 height=67/></li>
             {{/each}}
-
-{{!--             <li><a href="#"><img src="/assets/photo-small.jpg" width=84 height=67/></a></li>
-            <li><a href="#"><img src="/assets/photo-small.jpg" width=84 height=67/></a></li>
-            <li><a href="#"><img src="/assets/photo-small.jpg" width=84 height=67/></a></li>
-            <li><a href="#"><img src="/assets/photo-small.jpg" width=84 height=67/></a></li>
-            <li><a href="#"><img src="/assets/photo-small.jpg" width=84 height=67/></a></li>
-            <li><a href="#"><img src="/assets/photo-small.jpg" width=84 height=67/></a></li>
- --}}          </ul>
-
 
       {{#if unit.property.isLoaded}}
         <a {{bind-attr href=unit.google_map_url}} class="btn google_map" target="_blank">

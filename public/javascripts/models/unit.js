@@ -81,7 +81,7 @@ var Unit = DS.Model.extend({
     firstImage: function() {
       var images = this.get('images');
       return images.objectAt(0);
-    }.property('images.@each')
+    }.property('images.@each.isLoaded')
 });
 
 module.exports = Unit;

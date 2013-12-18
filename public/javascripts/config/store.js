@@ -14,6 +14,14 @@ DS.RESTAdapter.configure('App.Unit', {
     sideloadsAs: 'units'
 });
 
+// DS.RESTAdapter.configure('App.Image', {
+//     sideloadsAs: 'images'
+// });
+
+// DS.RESTAdapter.map('App.Unit', {
+//   images: { embedded: 'load' }
+// });
+
 module.exports = DS.Store.extend({
   // adapter: DS.RESTAdapter.create({plurals: {"property": "properties"}})
   adapter: DS.RESTAdapter.create()

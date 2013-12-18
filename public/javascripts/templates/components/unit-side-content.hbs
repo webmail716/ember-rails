@@ -12,10 +12,8 @@
               <span class="detail_id">LISTING ID: {{ unit.listing_id }}</span>
           </div>
 
-          {{!-- {{#if unit.floor_plan_photo }} --}}
 	          <div class="span5 floorplan_image">
               <h3>floor plan</h3>
-            	{{!-- <a href="/" class="lightbox"> --}}
 
                 {{#each image in unit.images}}
                   {{#if image.is_floorplan}}
@@ -29,12 +27,11 @@
 
             	
 	          </div>
-	        {{!-- {{/if}} --}}
       </div>
 
 
       <div class="col_wrapper" id="details_widget">
-          <div class="span3"><a href="/assets/apply_now.pdf" class="btn">apply now(pdf)</a></div>
+          <div class="span3"><a href="/assets/apply_now.pdf" class="btn">apply now (pdf)</a></div>
           <div class="span3"><a href="/assets/e-brochure.pdf" class="btn">e-brochure</a></div>
           <div class="span3 last">
             {{#linkTo 'contact_requests.new' class="btn"}}Schedule a visit{{/linkTo}}

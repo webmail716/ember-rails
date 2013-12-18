@@ -3,6 +3,7 @@ var UnitIndexRoute = Ember.Route.extend({
     this.controller.set('model', model);
     this.controller.set('contacts', App.Contact.find());
     this.controller.set('properties', App.Property.find());
+    this.controller.set('images', App.Image.find());
   },
 
   model: function(params) {

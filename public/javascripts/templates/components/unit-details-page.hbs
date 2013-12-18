@@ -5,7 +5,7 @@
 
         <!-- Add your site or application content here -->
         {{!-- <%= render :partial => "header" %> --}}
-
+{{#if unit.isLoaded}}
         <div class="wrapper">
             <section id="main_body">
 
@@ -20,6 +20,8 @@
             {{#linkTo 'unit.edit' unit}}Edit this unit{{/linkTo}}
         {{/if}}
         {{!-- <%= render :partial => "footer" %> --}}
-
+{{else}}
+    Loading...
+{{/if}}
         {{!-- <%#= render :partial => "javascripts" %>   --}}
 </div>

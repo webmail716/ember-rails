@@ -20,6 +20,7 @@ App.Store = require('./store'); // delete if you don't want ember-data
 
 App.SearchNavComponent = Ember.Component.extend({
   didInsertElement: function() {
+    this._super();
     this.scheduleAlert();
   },
 
@@ -34,6 +35,7 @@ App.SearchNavComponent = Ember.Component.extend({
 
 App.UnitCalculatorComponent = Ember.Component.extend({
   didInsertElement: function() {
+    this._super();
     Ember.run.scheduleOnce('afterRender', this, this.initComponent);
   },
 
@@ -47,10 +49,13 @@ App.UnitCalculatorComponent = Ember.Component.extend({
 
 App.UnitSideBarComponent = Ember.Component.extend({
   didInsertElement: function() {
-    Ember.run.scheduleOnce('afterRender', this, this.initComponent);
+    this._super();
+    Ember.run.next(this, this.initComponent);
   },
 
   initComponent: function() {
+    setTimeout(Ember.run.sync(), 5);
+
     this.$('.thumb').click(function() {
       var src = $(this).attr("src");
       $('.img_large').attr("src", src);
@@ -61,21 +66,21 @@ App.UnitSideBarComponent = Ember.Component.extend({
 
 App.UnitSideContentComponent = Ember.Component.extend({
   didInsertElement: function() {
+    this._super();
     // Ember.run.scheduleOnce('afterRender', this, this.initComponent);
     Ember.run.next(this, this.initComponent);
   },
 
   initComponent: function() {
-    this.$("a[rel^='prettyPhoto']").prettyPhoto();
-    alert("hey jonathon");
+    // this.$("a[rel^='prettyPhoto']").prettyPhoto();
     
-    this.$('.detail_price').click(function() {
-      alert("test");
-    });
+    // this.$('.detail_price').click(function() {
+    //   alert("test");
+    // });
 
-    this.$('.light').click(function() {
-      alert("test");
-    });
+    // this.$('.light').click(function() {
+    //   alert("test");
+    // });
   }
 });
 

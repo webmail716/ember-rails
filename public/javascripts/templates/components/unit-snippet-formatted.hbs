@@ -1,14 +1,19 @@
 <div class="sale_list">
+    {{!-- {{#if unit.firstImage.isLoaded}} --}}
     <div class="col list_image">
-        <img src="/assets/house-list1.jpg" />
-{{!--         <img {{bind-attr src="unit.images.image" }} width=150 height=150/>
+        {{!-- {{#if unit.firstImage}} --}}
+            <img {{bind-attr src="unit.firstImage.image"}} width=150 height=150/>
+        {{!-- {{/if}} --}}
 
-        {{#each im in unit.images}}
-        <img {{bind-attr src="im.image" }} width=150 height=150/>
+        {{#each im in images}}
+
+            <img {{bind-attr src="im.image"}} width=150 height=150/>
+            
         {{/each}}
 
-        <img {{bind-attr src="unit.featured_image.image" }} width=150 height=150/>
- --}}    </div>
+    </div>
+    {{!-- {{/if}} --}}
+
     <div class="col list_address">
         {{unit.property.street}}<br/>
         {{unit.property.city}}, {{unit.property.state}} {{unit.property.zip}}<br/>

@@ -6,6 +6,6 @@ class UnitSerializer < ActiveModel::Serializer
   # belongs_to :contact
 
   has_many :images
-  embed :ids, include: false
+  embed :ids, include: true
   
 end

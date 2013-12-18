@@ -3,7 +3,9 @@ var UnitsSearchRoute = Ember.Route.extend({
 		// return App.SearchParams.createRecord();
 		var model = App.SearchParams.create();
 		// console.log("params qt = " + params.query_type);
-console.log("in units search route");
+
+		console.log("in units search route");
+
 		if (params.query_type == "coop") {
 			model.set('for_sale', 't');
 			model.set('for_rent', 'f');
@@ -32,6 +34,7 @@ console.log("in units search route");
 	setupController: function(controller, model){
 	  controller.set('model', model);
 	  controller.set('isAuthenticated', App.AuthManager.isAuthenticated());
+	  controller.set('images', App.Image.find());
   },
 
 	// renderTemplate: function() {

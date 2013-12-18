@@ -13,7 +13,7 @@
 
 <div>
 {{#each unit in results}}
-	{{unit-snippet-formatted unit=unit isAuthenticated=isAuthenticated}}
+	{{unit-snippet-formatted unit=unit isAuthenticated=isAuthenticated images=unit.images}}
 {{else}}
 	No results
 {{/each}}
